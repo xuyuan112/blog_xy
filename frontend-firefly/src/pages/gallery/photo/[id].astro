@@ -1,0 +1,37 @@
+---
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import ApiState from "@/components/common/ApiState.astro";
+import { getPhoto } from "@/lib/api/gallery";
+import { resolveFileUrl } from "@/utils/file-url";
+
+const id = Astro.params.id || "";
+let photo = null;
+let failed = false;
+try {
+	if (!/^\d+$/.test(id)) throw new Error("invalid id");
+	photo = await getPhoto(Number(id));
+} catch {
+	failed = true;
+}
+---
+<MainGridLayout title="照片详情" description="照片与 EXIF 信息">
+	{failed || !photo ? (
+		<ApiState kind={failed ? "error" : "not-found"} message={failed ? "照片加载失败" : "照片不存在"} retryHref="/gallery/" />
+	) : (
+		<article class="photo-detail card-base">
+			<img src={resolveFileUrl(photo.original || photo.thumbnail || "/images/placeholder.png")} alt="" />
+			<div class="meta">
+				<a href={`/gallery/${photo.galleryId}/`}>返回相册</a>
+				{photo.shootTime && <time datetime={photo.shootTime}>{photo.shootTime}</time>}
+			</div>
+			{photo.exif && (
+				<dl>
+					{Object.entries(photo.exif).map(([key, value]) => <div><dt>{key}</dt><dd>{value}</dd></div>)}
+				</dl>
+			)}
+		</article>
+	)}
+</MainGridLayout>
+<style>
+	.photo-detail{padding:1.25rem}.photo-detail>img{display:block;width:100%;max-height:70vh;object-fit:contain;background:var(--card-bg);border-radius:.5rem}.meta{display:flex;gap:1rem;align-items:center;margin-top:1rem;color:var(--secondary)}.meta a{color:var(--primary)}dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.5rem;margin-top:1rem}dl div{padding:.6rem;border:1px solid var(--line-divider);border-radius:.25rem}dt{font-size:.8rem;color:var(--secondary)}dd{margin:.2rem 0 0}
+</style>

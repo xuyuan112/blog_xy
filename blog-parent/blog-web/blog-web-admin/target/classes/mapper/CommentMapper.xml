@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuyuan.blog.admin.mapper.CommentMapper">
+  <select id="pageAdminList" resultType="com.xuyuan.blog.admin.vo.comment.AdminCommentVO">
+    SELECT c.id, c.target_type AS targetType, c.target_id AS targetId,
+           CASE WHEN c.target_type = 1 THEN a.title WHEN c.target_type = 2 THEN m.title END AS targetTitle,
+           c.content, c.nickname, c.avatar, c.email, c.website, c.status,
+           DATE_FORMAT(c.create_time, '%Y-%m-%d %H:%i:%s') AS createTime,
+           DATE_FORMAT(c.update_time, '%Y-%m-%d %H:%i:%s') AS updateTime
+    FROM t_comment c
+    LEFT JOIN t_article a ON c.target_type = 1 AND c.target_id = a.id AND a.deleted = 0
+    LEFT JOIN t_article m ON c.target_type = 2 AND c.target_id = m.id AND m.deleted = 0
+    WHERE c.deleted = 0
+    <if test="param.targetType != null">AND c.target_type = #{param.targetType}</if>
+    <if test="param.status != null">AND c.status = #{param.status}</if>
+    ORDER BY c.create_time DESC, c.id DESC
+  </select>
+</mapper>

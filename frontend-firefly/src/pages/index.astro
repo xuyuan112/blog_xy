@@ -1,0 +1,11 @@
+---
+import ArticleFeed from "@/components/pages/ArticleFeed.svelte";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { listArticles } from "@/lib/api/articles";
+
+const initialArticles = await listArticles({ page: 1, pageSize: 100, type: 1 }).then((result) => result.records).catch(() => []);
+---
+
+<MainGridLayout title="首页" description="最新发布的技术文章">
+	<ArticleFeed client:load loadAll={true} initialArticles={initialArticles} />
+</MainGridLayout>

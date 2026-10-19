@@ -1,0 +1,11 @@
+package com.xuyuan.blog.admin.dto;
+
+import lombok.Data;
+import java.io.Serializable;
+
+@Data
+public class FriendQueryParam implements Serializable {
+    private long page = 1;
+    private long pageSize = 10;
+    private Integer status;
+}

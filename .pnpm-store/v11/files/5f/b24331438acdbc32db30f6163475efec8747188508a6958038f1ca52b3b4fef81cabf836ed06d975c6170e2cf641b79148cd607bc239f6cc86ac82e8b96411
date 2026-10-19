@@ -1,0 +1,32 @@
+{
+  "name": "merman-wasm",
+  "type": "module",
+  "collaborators": [
+    "Mingzhen Zhuang <superfrankie621@gmail.com>"
+  ],
+  "description": "WebAssembly bindings for merman browser rendering.",
+  "version": "0.8.0-alpha.3",
+  "license": "MIT OR Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Latias94/merman"
+  },
+  "files": [
+    "merman_wasm_bg.wasm",
+    "merman_wasm.js",
+    "merman_wasm.d.ts"
+  ],
+  "main": "merman_wasm.js",
+  "homepage": "https://github.com/Latias94/merman",
+  "types": "merman_wasm.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ],
+  "keywords": [
+    "mermaid",
+    "diagrams",
+    "wasm",
+    "svg",
+    "headless"
+  ]
+}

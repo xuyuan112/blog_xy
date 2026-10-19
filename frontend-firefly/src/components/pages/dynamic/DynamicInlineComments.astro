@@ -1,0 +1,30 @@
+---
+import { Icon } from "astro-icon/components";
+import I18nKey from "@/i18n/i18nKey";
+import { i18n } from "@/i18n/translation";
+
+interface Props {
+	// 后端评论绑定到 targetType=2（说说）/ targetId=...；最终值由 DynamicFeed
+	// 在客户端 cloneNode 时写入 dataset 覆盖 Astro 渲染的占位值。
+	targetId: number;
+	targetType?: number;
+}
+
+const { targetId, targetType = 2 } = Astro.props;
+---
+
+<dynamic-inline-comments
+	class="dynamic-inline-comments"
+	data-target-id={targetId}
+	data-target-type={targetType}
+>
+	<button type="button" class="dynamic-comment-toggle btn-plain" data-comment-toggle>
+		<Icon name="material-symbols:chat-bubble-outline-rounded" />
+		<span>{i18n(I18nKey.comments)}</span>
+		<Icon
+			name="material-symbols:expand-more-rounded"
+			class="dynamic-comment-chevron"
+		/>
+	</button>
+	<div class="dynamic-comment-panel" data-comment-panel hidden></div>
+</dynamic-inline-comments>

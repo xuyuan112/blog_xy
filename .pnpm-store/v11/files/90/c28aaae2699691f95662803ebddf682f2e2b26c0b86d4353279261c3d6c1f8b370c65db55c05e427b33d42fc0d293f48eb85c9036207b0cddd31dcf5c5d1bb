@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "preset": "browser-full",
+  "surface": "browser",
+  "package": "merman-wasm",
+  "default_features": true,
+  "features": [],
+  "capabilities": {
+    "render": true,
+    "analysis": true,
+    "ascii": true,
+    "core_full": true,
+    "core_host": true,
+    "elk_layout": true,
+    "ratex_math": false,
+    "editor_language": true
+  }
+}

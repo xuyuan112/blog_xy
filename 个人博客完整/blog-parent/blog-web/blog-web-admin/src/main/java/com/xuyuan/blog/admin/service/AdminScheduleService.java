@@ -1,0 +1,1 @@
+package com.xuyuan.blog.admin.service;import com.xuyuan.blog.admin.dto.*;import com.xuyuan.blog.admin.vo.schedule.AdminScheduleVO;import com.xuyuan.blog.common.result.PageResult;public interface AdminScheduleService { PageResult<AdminScheduleVO> pageList(ScheduleQueryParam p);Long create(ScheduleCreateParam p);void update(Long id,ScheduleCreateParam p);void delete(Long id); }

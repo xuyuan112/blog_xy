@@ -1,0 +1,13 @@
+---
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import ApiState from "@/components/common/ApiState.astro";
+import FriendApply from "@/components/pages/FriendApply.svelte";
+import { listFriends } from "@/lib/api/friends";
+let groups: Awaited<ReturnType<typeof listFriends>>["groups"] = [], failed = false;
+try { groups = (await listFriends()).groups || []; } catch { failed = true; }
+---
+<MainGridLayout title="友链" description="博客友链">
+{failed ? <ApiState kind="error" message="友链加载失败" retryHref="/friends/" /> : groups.length === 0 ? <ApiState kind="empty" message="暂无友链" /> : <div class="friends">{groups.map((group) => <section><h2>{group.name}</h2><div class="grid">{(group.friends || []).map((f) => <a class="card-base item" href={f.url} target="_blank" rel="noopener noreferrer">{f.avatar && <img src={f.avatar} alt="" loading="lazy" />}<div><strong>{f.name}</strong><p>{f.description || f.url}</p></div></a>)}</div></section>)}</div>}
+<FriendApply client:load />
+</MainGridLayout>
+<style>.friends{display:grid;gap:2rem}.friends h2{margin:0 0 1rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}.item{display:flex;gap:1rem;padding:1rem;align-items:center;color:inherit;text-decoration:none}.item img{width:3rem;height:3rem;border-radius:50%;object-fit:cover}.item p{margin:.35rem 0 0;color:var(--secondary);font-size:.9rem}</style>

@@ -1,0 +1,12 @@
+---
+import { getRandomWord, getWeather, type Word, type Weather } from "@/lib/api/site";
+let word: Word | null = null, weather: Weather | null = null;
+const results = await Promise.allSettled([getRandomWord(), getWeather()]);
+if (results[0].status === "fulfilled") word = results[0].value;
+if (results[1].status === "fulfilled") weather = results[1].value;
+---
+<section class="site-overview" aria-label="站点信息">
+{word?.content && <article><strong>一言</strong><p>{word.content}{word.source && <small> —— {word.source}</small>}</p></article>}
+{weather && <article><strong>天气</strong><p>{[weather.city, weather.temp, weather.weather].filter(Boolean).join(" · ")}</p></article>}
+</section>
+<style>.site-overview{display:grid;gap:.75rem;margin-bottom:1rem}.site-overview article{padding:1rem;border:1px solid var(--line-divider);border-radius:.5rem}.site-overview p{margin:.4rem 0 0;white-space:pre-wrap}.site-overview small{color:var(--secondary)}.site-overview ul{margin:.4rem 0 0;padding-left:1.2rem;color:var(--secondary)}</style>

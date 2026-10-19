@@ -1,0 +1,13 @@
+---
+import ApiState from "@/components/common/ApiState.astro";
+import { search, type SearchResult } from "@/lib/api/search";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+const keyword = Astro.url.searchParams.get("q") || "";
+const rawPage = Number(Astro.url.searchParams.get("page"));
+const page = Number.isInteger(rawPage) && rawPage > 0 ? rawPage : 1;
+let results: SearchResult[] = [], pages = 0, total = 0, failed = false;
+if (keyword.trim()) { try { const value = await search(keyword, page, 10); results = value.records; pages = value.pages; total = value.total; } catch { failed = true; } }
+const link = (p: number) => `/search/?q=${encodeURIComponent(keyword)}&page=${p}`;
+---
+<MainGridLayout title="搜索" description="搜索全站已发布内容"><section class="search-page card-base"><form method="get"><input name="q" value={keyword} placeholder="输入关键词" aria-label="搜索全站内容" /><button type="submit">搜索</button></form>{failed ? <ApiState kind="error" message="搜索服务暂不可用" retryHref={link(page)} /> : !keyword.trim() ? <ApiState kind="empty" message="请输入关键词开始搜索" /> : results.length === 0 ? <ApiState kind="empty" message="没有匹配的已发布内容" /> : <><ul>{results.map((item) => <li><a href={item.type === 2 ? `/thoughts/${item.id}/` : `/posts/${item.id}/`}>{item.title}</a>{item.snippet && <p>{item.snippet}</p>}</li>)}</ul>{pages > 1 && <nav class="pagination"><a href={link(Math.max(1, page - 1))} aria-disabled={page <= 1}>上一页</a><span>第 {page} / {pages} 页，共 {total} 条</span><a href={link(Math.min(pages, page + 1))} aria-disabled={page >= pages}>下一页</a></nav>}</>}</section></MainGridLayout>
+<style>.search-page{padding:1.5rem}.search-page form{display:flex;gap:.5rem}.search-page input{min-width:0;flex:1;padding:.65rem;border:1px solid var(--line-divider);border-radius:.25rem;background:transparent}.search-page button{padding:.65rem 1rem;background:var(--primary);color:#fff;border-radius:.25rem}.search-page ul{list-style:none;padding:0}.search-page li{padding:1rem 0;border-bottom:1px solid var(--line-divider)}.search-page a{font-weight:700;color:var(--primary)}.search-page p{color:var(--secondary)}.pagination{display:flex;justify-content:center;gap:1rem;align-items:center;margin-top:1rem;color:var(--secondary)}.pagination a[aria-disabled="true"]{opacity:.45;pointer-events:none}</style>

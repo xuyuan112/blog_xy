@@ -1,0 +1,13 @@
+<script lang="ts">
+	import { onMount } from "svelte";
+	import { createComment, listComments, type Comment } from "@/lib/api/comments";
+	import { apiErrorMessage } from "@/lib/api/client";
+	export let targetType: 1 | 2 = 1;
+	export let targetId: number;
+	let comments: Comment[] = [], content = "", nickname = "", email = "", website = "", loading = true, submitting = false, error = "";
+	async function load() { loading = true; error = ""; try { comments = (await listComments(targetType, targetId)).records; } catch (cause) { error = apiErrorMessage(cause, "评论加载失败"); } finally { loading = false; } }
+	async function submit() { if (!content.trim() || !nickname.trim() || submitting) return; submitting = true; error = ""; try { await createComment({ targetType, targetId, content: content.trim(), nickname: nickname.trim(), email: email.trim() || undefined, website: website.trim() || undefined }); content = ""; await load(); } catch (cause) { error = apiErrorMessage(cause, "评论提交失败，请检查输入"); } finally { submitting = false; } }
+	onMount(load);
+</script>
+<section class="backend-comments" aria-label="评论"><h2>评论</h2>{#if loading}<p>正在加载评论...</p>{:else if error}<p role="alert">{error} <button type="button" on:click={load}>重试</button></p>{:else if comments.length === 0}<p>暂无评论</p>{:else}{#each comments as comment}<article><strong>{comment.nickname}</strong>{#if comment.createdAt}<time>{comment.createdAt}</time>{/if}<p>{comment.content}</p></article>{/each}{/if}<form on:submit|preventDefault={submit}><input bind:value={nickname} placeholder="昵称" required maxlength="64" /><input bind:value={email} type="email" placeholder="邮箱（可选）" /><input bind:value={website} type="url" placeholder="网站（可选）" /><textarea bind:value={content} placeholder="写下评论" required maxlength="1000"></textarea><button type="submit" disabled={submitting}>{submitting ? "提交中..." : "发表评论"}</button></form></section>
+<style>.backend-comments{margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--line-divider)}.backend-comments article{padding:.75rem 0;border-bottom:1px solid var(--line-divider)}.backend-comments time{margin-left:.75rem;color:var(--secondary);font-size:.8rem}.backend-comments p{white-space:pre-wrap}.backend-comments form{display:grid;gap:.5rem;margin-top:1rem}.backend-comments input,.backend-comments textarea{padding:.6rem;border:1px solid var(--line-divider);border-radius:.25rem;background:transparent}.backend-comments textarea{min-height:6rem;resize:vertical}.backend-comments button{justify-self:start;padding:.6rem 1rem;background:var(--primary);color:#fff;border-radius:.25rem}.backend-comments button:disabled{opacity:.5}</style>

@@ -1,0 +1,71 @@
+仍有缺陷，文档当前不能标记为全部完成。
+                                                                                              
+  主要问题：                                                                                  
+                                                                                              
+  1. 文档状态滞后（已解决）                                                                    
+                                                                                              
+  原文档曾将文章详情 SSR 和热门推荐接入状态记录为待处理；这两项判断现已过时。                   
+                                                                                              
+  但代码实际上已经：                                                                          
+                                                                                              
+  - 配置了 @astrojs/node                                                                      
+  - 使用 output: "server"                                                                     
+  - 文章详情已移除 getStaticPaths()                                                           
+  - RecommendedPost.astro 已调用 listHotArticles()                                            
+                                                                                              
+  已同步更新 `docs/frontend-backend-integration-review.md` 和                                  
+  `docs/dynamic-blog-migration-tasks.md`：文章详情的 SSR 配置、运行时动态路由以及热门推荐      
+  均标记为当前实现；尚未完成的内容仅保留部署环境和浏览器视觉验收。                              
+                                                                                              
+  2. 推荐组件旧兼容逻辑（已解决）                                                             
+                                                                                              
+  `RecommendedPost.astro` 现在只调用 `listHotArticles()`（`/articles/hot`），旧的随机文章脚本、  
+  `data-related-ids` 和文章元数据缓存引用均已删除。                                         
+                                                                                              
+  3. 日历旧缓存变量名称（已解决）                                                              
+                                                                                              
+  日历现已直接请求 `/xuyuan/articles?page=1&pageSize=100`，并使用通用缓存变量：                 
+                                                                                              
+  `window.__blogArticleCache`                                                                  
+                                                                                               
+  日历日期完全来自后端文章的 `publishedAt` 字段，不再请求 `/api/allPostMeta.json` 或依赖本地    
+  文章元数据。                                                                                 
+                                                                                              
+  4. dynamicConfig.apiUrl 旧本地接口配置（已解决）                                               
+                                                                                              
+  `dynamicConfig.apiUrl` 已从配置和类型中删除。动态页面及侧栏统一使用后端 `/xuyuan/moments`， 
+  Memos 仅保留独立的第三方数据源配置。                                                       
+                                                                                              
+  5. galleryConfig.ts 静态相册业务配置（已解决）                                                 
+                                                                                              
+  `galleryConfig.ts` 现已明确为纯 UI 配置，仅保留瀑布流列宽；相册、照片和封面数据全部来自后端  
+  API，不再提供静态相册业务数据或回退内容。                                                   
+                                                                                              
+  6. API DTO 映射统一（已解决）                                                                
+                                                                                              
+  核心文章、动态、相册、照片、评论、搜索、友链、站点和认证均已通过边界映射转换为稳定的前端模型：
+                                                                                               
+  - `site.ts` 为关于、公告、一言、天气和日程定义具体模型，并映射后端 DTO。                    
+  - `auth.ts` 为用户和登录响应增加 DTO 到前端模型的显式映射。                                  
+  - Friend 使用专用 `mapFriend`，并规范化分组和总数。                                         
+  - Comment 使用专用 `mapComment`，创建响应的 ID 也统一规范化。                                
+                                                                                              
+  7. 真实端到端验收还不完整                                                                   
+                                                                                              
+  已经验证过：                                                                                
+                                                                                              
+  - 文章、标签、分类、评论读取                                                                
+  - 注册、登录、userinfo、refresh、logout                                                     
+  - 点赞                                                                                      
+  - 相册和 MinIO 图片 URL                                                                     
+                                                                                              
+  但仍缺少：                                                                                  
+                                                                                              
+  - 前台浏览器中的完整交互验证                                                                
+  - 推荐文章实际显示验证                                                                      
+  - 日历真实数据视觉验证                                                                      
+  - 相册页面浏览器展示验证                                                                    
+  - 评论审核后前台可见性验证                                                                  
+  - 过期 Token 自动刷新验证                                                                   
+                                                                                              
+  结论：核心动态化架构已经完成，但文档、遗留兼容代码、部分 DTO 设计和浏览器端验收仍未收尾。

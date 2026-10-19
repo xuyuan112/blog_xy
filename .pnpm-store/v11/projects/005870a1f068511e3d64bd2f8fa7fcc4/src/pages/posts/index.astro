@@ -1,0 +1,14 @@
+---
+import ArticleFeed from "@/components/pages/ArticleFeed.svelte";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { listArticles } from "@/lib/api/articles";
+
+const page = Number(Astro.url.searchParams.get("page")) || 1;
+const categoryId = Number(Astro.url.searchParams.get("categoryId")) || undefined;
+const tagId = Number(Astro.url.searchParams.get("tagId")) || undefined;
+const initialResult = await listArticles({ page, pageSize: 10, type: 1, ...(categoryId ? { categoryId } : {}), ...(tagId ? { tagId } : {}) }).catch(() => ({ records: [], pages: 0, total: 0, page, pageSize: 10 }));
+---
+
+<MainGridLayout title="文章" description="已发布的技术文章">
+	<ArticleFeed client:load initialArticles={initialResult.records} initialPage={page} initialPages={initialResult.pages} initialTotal={initialResult.total} />
+</MainGridLayout>

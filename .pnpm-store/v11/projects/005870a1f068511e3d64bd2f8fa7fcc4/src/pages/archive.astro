@@ -1,0 +1,18 @@
+---
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import ApiState from "@/components/common/ApiState.astro";
+import { getTimeline, type ArchiveYear } from "@/lib/api/archive";
+import { listCategories, listTags, type CategorySummary, type TagSummary } from "@/lib/api/taxonomy";
+let timeline: ArchiveYear[] = [], categories: CategorySummary[] = [], tags: TagSummary[] = [], failed = false;
+try { [timeline, categories, tags] = await Promise.all([getTimeline(), listCategories(), listTags()]); } catch { failed = true; }
+---
+<MainGridLayout title="归档" description="按时间、分类和标签浏览文章">
+{failed ? <ApiState kind="error" message="归档加载失败" retryHref="/archive/" /> : <div class="archive-page">
+<section class="archive-section"><h2>分类</h2><div class="chips">{categories.map((category) => <a href={`/posts/?categoryId=${category.id}`} class="chip">{category.name}<span>{category.articleCount || 0}</span></a>)}</div></section>
+<section class="archive-section"><h2>标签</h2><div class="chips">{tags.map((tag) => <a href={`/posts/?tagId=${tag.id}`} class="chip">{tag.name}<span>{tag.articleCount || 0}</span></a>)}</div></section>
+<section class="archive-section"><h2>时间线</h2>{timeline.length === 0 ? <p class="muted">暂无归档文章</p> : <div class="timeline">{timeline.map((year) => <section class="year"><h3>{year.year}</h3>{year.months.map((month) => <div class="month"><h4>{month.month}</h4><ul>{month.articles.map((article) => <li><a href={`/posts/${article.id}/`}>{article.title}</a><time datetime={article.publishedAt}>{article.publishedAt?.slice(0, 10)}</time></li>)}</ul></div>)}</section>)}</div>}</section>
+</div>}
+</MainGridLayout>
+<style>
+.archive-page{display:grid;gap:1rem}.archive-section{padding:1.25rem;border:1px solid var(--line-divider);border-radius:.5rem}.archive-section h2{margin:0 0 1rem;font-size:1.15rem}.chips{display:flex;flex-wrap:wrap;gap:.5rem}.chip{display:inline-flex;gap:.4rem;padding:.4rem .65rem;border:1px solid var(--line-divider);border-radius:.25rem;color:inherit;text-decoration:none}.chip span{color:var(--secondary);font-size:.8rem}.muted{color:var(--secondary)}.timeline{display:grid;gap:1.25rem}.year h3{margin:0 0 .75rem;font-size:1.5rem;color:var(--primary)}.month{padding-left:1rem;border-left:2px solid var(--line-divider);margin-bottom:.8rem}.month h4{margin:0 0 .4rem;color:var(--secondary)}.month ul{list-style:none;margin:0;padding:0;display:grid;gap:.35rem}.month li{display:flex;justify-content:space-between;gap:1rem}.month a{color:inherit;text-decoration:none}.month a:hover{color:var(--primary)}.month time{color:var(--secondary);font-size:.8rem;white-space:nowrap}
+</style>

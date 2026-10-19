@@ -1,0 +1,58 @@
+---
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import ApiState from "@/components/common/ApiState.astro";
+import { getThought, type ArticleDetail } from "@/lib/api/articles";
+import sanitizeHtml from "sanitize-html";
+import { marked } from "marked";
+import LikeButton from "@/components/interaction/LikeButton.svelte";
+import BackendComments from "@/components/comment/BackendComments.svelte";
+import "@/styles/markdown.css";
+import "@/styles/markdown-extend.styl";
+import { resolveFileUrl } from "@/utils/file-url";
+
+const id = Astro.params.id || "";
+let thought: ArticleDetail | null = null;
+let failed = false;
+try {
+	if (!/^\d+$/.test(id)) throw new Error("invalid id");
+	thought = await getThought(id);
+} catch {
+	failed = true;
+}
+const html = thought ? sanitizeHtml(await marked.parse(thought.content || ""), {
+	allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img", "h1", "h2", "span"]),
+	allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, img: ["src", "alt", "title", "loading"], a: ["href", "target", "rel"] },
+	allowedSchemes: ["http", "https", "mailto"],
+	transformTags: {
+		img: (tagName, attribs) => ({ tagName, attribs: { ...attribs, src: resolveFileUrl(attribs.src) } }),
+	},
+}) : "";
+const tags = thought?.tags?.map((tag) => typeof tag === "string" ? tag : tag.name) || [];
+const publishedDate = thought?.publishedAt?.slice(0, 10);
+---
+
+<MainGridLayout title={thought?.title || "杂谈详情"} description={thought?.summary || thought?.description || "杂谈详情"}>
+	{failed || !thought ? <ApiState kind={failed ? "error" : "not-found"} message={failed ? "杂谈加载失败" : "杂谈不存在"} retryHref="/thoughts/" /> : <article class="thought-detail card-base">
+		{thought.cover && <img class="thought-cover" src={resolveFileUrl(thought.cover)} alt={thought.title} />}
+		<h1>{thought.title}</h1>
+		<div class="meta">{thought.categoryName && <span>{thought.categoryName}</span>}{publishedDate && <time datetime={publishedDate}>{publishedDate}</time>}<span>{thought.viewCount || 0} 阅读</span></div>
+		{tags.length > 0 && <div class="tags">{tags.map((tag) => <span>{tag}</span>)}</div>}
+		<div data-pagefind-body class="prose dark:prose-invert prose-base max-w-none! custom-md markdown-content" set:html={html} />
+		<LikeButton client:load targetType={1} targetId={Number(id)} likeCount={thought.likeCount || 0} />
+		<BackendComments client:load targetId={Number(id)} />
+		<nav class="thought-nav">{thought.prevArticle ? <a href={`/thoughts/${thought.prevArticle.id}/`}>上一篇：{thought.prevArticle.title}</a> : <span />}{thought.nextArticle ? <a href={`/thoughts/${thought.nextArticle.id}/`}>下一篇：{thought.nextArticle.title}</a> : <span />}</nav>
+	</article>}
+</MainGridLayout>
+
+<style>
+	.thought-detail { padding: 1.5rem; }
+	.thought-cover { width: 100%; max-height: 26rem; object-fit: cover; border-radius: .75rem; margin-bottom: 2rem; }
+	.thought-detail > h1 { position: relative; margin: 0 0 .75rem; font-size: 2rem; line-height: 1.25; font-weight: 700; }
+	.thought-detail > h1::before { content: ""; position: absolute; left: -1rem; top: .25rem; width: .25rem; height: 1.25rem; border-radius: .375rem; background: var(--primary); }
+	.meta, .tags, .thought-nav { display: flex; flex-wrap: wrap; gap: .75rem; color: var(--secondary); margin-bottom: 1.25rem; }
+	.tags span { padding: .2rem .5rem; background: var(--btn-plain-bg); border-radius: .25rem; }
+	.thought-nav { justify-content: space-between; border-top: 1px dashed var(--line-divider); padding-top: 1rem; margin-top: 2rem; }
+	.thought-nav a { color: var(--primary); }
+	.thought-detail img { max-width: 100%; border-radius: .5rem; }
+	@media (min-width: 768px) { .thought-detail { padding: 2.25rem; } .thought-detail > h1 { font-size: 2.25rem; } .thought-detail > h1::before { left: -1.125rem; } }
+</style>

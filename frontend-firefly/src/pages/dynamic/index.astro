@@ -1,0 +1,43 @@
+---
+import { Icon } from "astro-icon/components";
+import DynamicFeed from "@/components/pages/dynamic/DynamicFeed.svelte";
+import DynamicItemTemplate from "@/components/pages/dynamic/DynamicItemTemplate.astro";
+import { dynamicConfig, siteConfig } from "@/config";
+import { getSchedules } from "@/lib/api/site";
+import I18nKey from "@/i18n/i18nKey";
+import { i18n } from "@/i18n/translation";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import "@/styles/dynamic.css";
+
+const title = dynamicConfig.title || "说说";
+const description = dynamicConfig.description || "记录日常想法与生活片段";
+const itemsPerPage = Math.max(1, dynamicConfig.itemsPerPage ?? 10);
+// 移动端 / 桌面端共用同一个 DynamicFeed，评论组件（BackendComments）走后端 /xuyuan/comments，
+// 不再依赖第三方评论系统，所以即使 commentConfig.type === "none" 也能渲染评论挂件。
+const showComments = Boolean(dynamicConfig.showComment !== false);
+const schedules = await getSchedules().catch(() => []);
+---
+
+<MainGridLayout title={title} description={description}>
+	<section class="dynamic-page" aria-labelledby="dynamic-page-title">
+		<header class="dynamic-page-header card-base">
+			<div class="dynamic-page-heading">
+				<div class="dynamic-page-icon" aria-hidden="true"><Icon name="material-symbols:forum-rounded" /></div>
+				<div><h2 id="dynamic-page-title">{title}</h2>{description && <p>{description}</p>}</div>
+			</div>
+			<div class="dynamic-count" aria-label={i18n(I18nKey.dynamic)}><Icon name="material-symbols:dynamic-feed-rounded" /><strong data-dynamic-page-count>0</strong><span>{i18n(I18nKey.dynamic)}</span></div>
+			<div class="dynamic-filter">
+				<label class="dynamic-search"><Icon name="material-symbols:search-rounded" /><input type="search" data-dynamic-search placeholder={i18n(I18nKey.dynamicSearch)} /></label>
+				<label class="dynamic-year-select"><Icon name="material-symbols:calendar-month-rounded" /><select data-year-select aria-label={i18n(I18nKey.year)}><option value="all">{i18n(I18nKey.dynamicAllYears)}</option></select><Icon name="material-symbols:arrow-drop-down-rounded" /></label>
+			</div>
+		</header>
+		<!--
+			useBlogApi={true} 让动态页从后端 /xuyuan/moments 接口拉取说说数据，
+			而不是读取本地 /api/dynamic.json。
+			source="http://blog" 仅作为标记：让 DynamicFeed 内部按本地时区格式化时间
+			（因为 source 以 http 开头时会使用浏览器本地时区）。
+		-->
+		<DynamicFeed client:load source="http://blog" useBlogApi={true} {itemsPerPage} {showComments} emptyText={i18n(I18nKey.dynamicEmpty)} noResultsText={i18n(I18nKey.dynamicNoResults)} loadingText={i18n(I18nKey.dynamicLoading)} allYearsText={i18n(I18nKey.dynamicAllYears)} timezone={siteConfig.timezone || "UTC"} memos={dynamicConfig.memos} {schedules} />
+		<DynamicItemTemplate />
+	</section>
+</MainGridLayout>

@@ -1,0 +1,21 @@
+---
+import { Icon } from "astro-icon/components";
+import WidgetLayout from "@/components/common/WidgetLayout.astro";
+import { siteConfig } from "@/config";
+import I18nKey from "@/i18n/i18nKey";
+import { i18n } from "@/i18n/translation";
+import type { WidgetComponentConfig } from "@/types/config";
+import { listArticles } from "@/lib/api/articles";
+import { listCategories, listTags } from "@/lib/api/taxonomy";
+interface Props { class?: string; style?: string; widgetConfig?: WidgetComponentConfig; }
+const { class: className, style, widgetConfig } = Astro.props;
+const showTitle = widgetConfig?.showTitle !== false;
+const siteStartDate = siteConfig.siteStartDate || "2025-01-01";
+const [articlePage, categories, tags] = await Promise.all([listArticles({ page: 1, pageSize: 1 }).catch(() => ({ total: 0, records: [] })), listCategories().catch(() => []), listTags().catch(() => [])]);
+const stats = [{ icon: "material-symbols:article-outline", label: i18n(I18nKey.siteStatsPostCount), value: articlePage.total }, { icon: "material-symbols:folder-outline", label: i18n(I18nKey.siteStatsCategoryCount), value: categories.length }, { icon: "material-symbols:label-outline", label: i18n(I18nKey.siteStatsTagCount), value: tags.length }, { icon: "material-symbols:calendar-clock-outline", label: i18n(I18nKey.siteStatsRunningDays), value: 0, id: "running-days" }];
+---
+<WidgetLayout name={i18n(I18nKey.siteStats)} showTitle={showTitle} id="site-stats" class={className} style={style}><div class="flex flex-col gap-2">{stats.map((stat) => <div class="flex items-center justify-between px-3 py-1.5"><div class="flex items-center gap-2.5"><Icon name={stat.icon} class="text-(--primary) text-xl" /><span class="text-sm">{stat.label}</span></div><span class="text-base font-bold" data-stat-id={stat.id}>{stat.value}</span></div>)}</div></WidgetLayout>
+<script is:inline define:vars={{ siteStartDate }}>
+  const days = Math.ceil((Date.now() - new Date(siteStartDate).getTime()) / 86400000);
+  document.querySelectorAll('[data-stat-id="running-days"]').forEach((el) => { el.textContent = String(days); });
+</script>

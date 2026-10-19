@@ -1,0 +1,1 @@
+package com.xuyuan.blog.admin.service;import com.xuyuan.blog.admin.dto.AboutUpdateParam;import com.xuyuan.blog.model.entity.About;public interface AdminAboutService { About get(); About update(AboutUpdateParam param); }

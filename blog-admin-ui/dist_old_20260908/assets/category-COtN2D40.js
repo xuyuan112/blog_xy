@@ -1,0 +1,1 @@
+import{c as a,f as r,d as n,e as o}from"./request-qU15BzWa.js";function s(){return a("/categories")}function c(e){return r("/categories",e)}function u(e,t){return n(`/categories/${e}`,t)}function g(e){return o(`/categories/${e}`)}export{c,g as d,s as g,u};

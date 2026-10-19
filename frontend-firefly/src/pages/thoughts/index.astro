@@ -1,0 +1,46 @@
+---
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import ApiState from "@/components/common/ApiState.astro";
+import { listArticles, type ArticleListItem } from "@/lib/api/articles";
+import { resolveFileUrl } from "@/utils/file-url";
+
+let thoughts: ArticleListItem[] = [];
+let failed = false;
+try {
+	thoughts = (await listArticles({ page: 1, pageSize: 20, type: 2 })).records;
+} catch {
+	failed = true;
+}
+---
+
+<MainGridLayout title="杂谈" description="生活与思考的记录">
+	{failed ? <ApiState kind="error" message="杂谈加载失败" retryHref="/thoughts/" /> : thoughts.length === 0 ? <ApiState kind="empty" message="暂无杂谈" /> : (
+		<div class="thought-list">
+			{thoughts.map((thought) => (
+				<a class="thought card-base" href={`/thoughts/${thought.id}/`}>
+					{thought.cover && <img class="thought-cover" src={resolveFileUrl(thought.cover)} alt={thought.title} loading="lazy" />}
+					<div class="thought-body">
+						<h2 class="thought-title">{thought.title}</h2>
+						{(thought.summary || thought.description) && <p>{thought.summary || thought.description}</p>}
+						<div class="thought-meta">
+							{thought.categoryName && <span>{thought.categoryName}</span>}
+							{thought.publishedAt && <time datetime={thought.publishedAt.slice(0, 10)}>{thought.publishedAt.slice(0, 10)}</time>}
+						</div>
+					</div>
+				</a>
+			))}
+		</div>
+	)}
+</MainGridLayout>
+
+<style>
+	.thought-list { display: grid; gap: 1rem; }
+	.thought { display: grid; gap: 1rem; padding: 1.25rem; color: inherit; text-decoration: none; }
+	.thought-cover { width: 100%; max-height: 16rem; object-fit: cover; border-radius: .5rem; }
+	.thought-body { display: grid; gap: .6rem; }
+	.thought time { color: var(--secondary); font-size: .85rem; }
+	.thought p { margin: 0; white-space: pre-wrap; color: var(--secondary); }
+	.thought-title { margin: 0; font-size: 1.25rem; font-weight: 700; color: var(--primary); }
+	.thought-meta { display: flex; gap: .75rem; color: var(--secondary); font-size: .85rem; }
+	@media (min-width: 768px) { .thought { grid-template-columns: 14rem 1fr; align-items: start; } .thought-cover { max-height: none; } }
+</style>

@@ -1,0 +1,34 @@
+---
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import ApiState from "@/components/common/ApiState.astro";
+import { getGallery, listGalleries, type Gallery } from "@/lib/api/gallery";
+import { resolveFileUrl } from "@/utils/file-url";
+let galleries: Gallery[] = []; let failed = false;
+try {
+  galleries = await Promise.all((await listGalleries(1, 100)).records.map(async (gallery) => {
+    if (gallery.cover) return gallery;
+    try { const detail = await getGallery(gallery.id); return { ...gallery, cover: detail.photos[0]?.thumbnail || detail.photos[0]?.original }; } catch { return gallery; }
+  }));
+} catch { failed = true; }
+---
+<MainGridLayout title="相册" description="记录生活中的美好瞬间">
+{failed ? <ApiState kind="error" message="相册加载失败" retryHref="/gallery/" /> : galleries.length === 0 ? <ApiState kind="empty" message="暂无相册" /> : <>
+<form class="gallery-search" role="search"><span aria-hidden="true">⌕</span><input name="q" placeholder="搜索相册..." aria-label="搜索相册" value={Astro.url.searchParams.get("q") || ""} /><button type="submit">搜索</button></form>
+<div class="albums">{galleries.map((g) => <a class="album" href={`/gallery/${g.id}/`}><div class="cover">{g.cover ? <img src={resolveFileUrl(g.cover)} alt={g.name} loading="lazy" /> : <div class="placeholder">相册</div>}<span class="count">{g.photoCount || 0} 张照片</span><div class="overlay"><strong>{g.name}</strong>{g.description && <p>{g.description}</p>}<small>{g.shootDate || ""}</small></div></div></a>)}</div>
+</>}
+</MainGridLayout>
+<script>
+  const form = document.querySelector<HTMLFormElement>(".gallery-search");
+  const search = form?.querySelector<HTMLInputElement>("input");
+  const cards = [...document.querySelectorAll<HTMLElement>(".album")];
+  const filter = () => {
+    const query = search?.value.trim().toLowerCase() || "";
+    cards.forEach((card) => { card.hidden = query !== "" && !card.textContent?.toLowerCase().includes(query); });
+  };
+  search?.addEventListener("input", filter);
+  form?.addEventListener("submit", (event) => { event.preventDefault(); filter(); const value = search?.value.trim() || ""; const url = new URL(window.location.href); if (value) url.searchParams.set("q", value); else url.searchParams.delete("q"); window.history.replaceState({}, "", url); });
+  filter();
+</script>
+<style>
+.gallery-search{display:flex;align-items:center;gap:.75rem;height:3.25rem;padding:0 1rem;border:1px solid var(--line-divider);border-radius:1rem;margin-bottom:1.25rem}.gallery-search span{font-size:1.6rem;color:var(--secondary)}.gallery-search input{border:0;outline:0;background:transparent;width:100%;font-size:1rem}.gallery-search button{border:0;border-radius:.6rem;padding:.5rem 1rem;background:var(--primary);color:#fff;cursor:pointer}.albums{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.25rem}.album{display:block;color:inherit;text-decoration:none}.cover{position:relative;aspect-ratio:1.35;overflow:hidden;border-radius:1rem;background:var(--card-bg)}.cover img,.placeholder{width:100%;height:100%;object-fit:cover}.placeholder{display:grid;place-items:center;color:var(--secondary)}.count{position:absolute;top:.75rem;right:.75rem;padding:.4rem .7rem;border-radius:999px;background:#111a;color:#fff;font-size:.8rem}.overlay{position:absolute;inset:auto 0 0;padding:2.5rem 1rem .9rem;color:#fff;background:linear-gradient(transparent,#000b)}.overlay strong{font-size:1.15rem}.overlay p{margin:.25rem 0;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.overlay small{font-size:.78rem;color:#fffc}.album:hover img{transform:scale(1.04);transition:transform .3s}
+</style>

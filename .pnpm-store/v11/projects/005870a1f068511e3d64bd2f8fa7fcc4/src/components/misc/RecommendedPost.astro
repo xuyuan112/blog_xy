@@ -1,0 +1,28 @@
+---
+import { Icon } from "astro-icon/components";
+import I18nKey from "@/i18n/i18nKey";
+import { i18n } from "@/i18n/translation";
+import { listHotArticles } from "@/lib/api/articles";
+import { getPostUrlBySlug } from "@/utils/url-utils";
+
+interface Props { currentPostId: string | number; }
+const { currentPostId } = Astro.props;
+const posts = (await listHotArticles().catch(() => [])).filter((post) => String(post.id) !== String(currentPostId)).slice(0, 5);
+---
+
+<section class="card-base p-5 md:p-6" aria-label={i18n(I18nKey.relatedPosts)}>
+  <header class="flex items-center gap-2 pb-3 mb-1 border-b border-(--line-divider)">
+    <Icon name="material-symbols:recommend" class="text-xl text-(--primary)" />
+    <span class="font-bold">{i18n(I18nKey.relatedPosts)}</span>
+  </header>
+  {posts.length ? <div class="flex flex-col">{posts.map((post, index) => <a class="post-link" href={getPostUrlBySlug(String(post.id))}><span class="index">{index + 1}</span><span class="title">{post.title}</span><Icon name="material-symbols:chevron-right-rounded" class="arrow" /></a>)}</div> : <p class="empty">暂无热门文章</p>}
+</section>
+
+<style>
+  .post-link { display: flex; align-items: center; gap: .75rem; padding: .75rem .25rem; color: inherit; text-decoration: none; border-bottom: 1px dashed var(--line-divider); }
+  .post-link:last-child { border-bottom: 0; }
+  .index { width: 1.5rem; height: 1.5rem; display: grid; place-items: center; border-radius: .25rem; background: var(--enter-btn-bg); color: var(--primary); font-size: .85rem; font-weight: 700; }
+  .title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .arrow { color: var(--secondary); }
+  .empty { color: var(--secondary); text-align: center; padding: 2rem 0; }
+</style>

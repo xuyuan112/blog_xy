@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuyuan.blog.web.mapper.CommentMapper">
+    <select id="pageApproved" resultType="com.xuyuan.blog.web.vo.comment.CommentVO">
+        SELECT
+            id,
+            target_type AS targetType,
+            target_id AS targetId,
+            content,
+            nickname,
+            avatar,
+            create_time AS createdAt
+        FROM t_comment
+        WHERE deleted = 0
+          AND status = 1
+          AND target_type = #{query.targetType}
+          AND target_id = #{query.targetId}
+        ORDER BY create_time ASC, id ASC
+    </select>
+</mapper>

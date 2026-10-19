@@ -1,0 +1,12 @@
+<script setup lang="ts">
+import { onMounted, reactive, ref } from 'vue'
+import { ElMessage, ElMessageBox } from 'element-plus'
+import { createNotice, deleteNotice, getNoticePage, updateNotice, type AdminNotice } from '@/api/notice'
+const rows=ref<AdminNotice[]>([]);const total=ref(0);const loading=ref(false);const dialog=ref(false);const editing=ref<number|null>(null);const content=ref('');const query=reactive({page:1,pageSize:10})
+async function load(){loading.value=true;try{const r=await getNoticePage(query);rows.value=r.records||[];total.value=r.total||0}finally{loading.value=false}}
+function open(raw?:unknown){const row=raw as AdminNotice|undefined;editing.value=row?.id||null;content.value=row?.content||'';dialog.value=true}
+async function save(){if(!content.value.trim()){ElMessage.warning('请输入公告内容');return}if(editing.value===null)await createNotice(content.value);else await updateNotice(editing.value,content.value);dialog.value=false;ElMessage.success('保存成功');load()}
+async function remove(raw:unknown){const row=raw as AdminNotice;await ElMessageBox.confirm('确定删除该公告吗？','提示',{type:'warning'});await deleteNotice(row.id);load()};onMounted(load)
+</script>
+<template><div class="notice-page"><el-card shadow="never"><template #header><div class="header"><span>公告管理</span><el-button type="primary" @click="open">新增公告</el-button></div></template><el-table v-loading="loading" :data="rows" border stripe><el-table-column prop="id" label="ID" width="80"/><el-table-column prop="content" label="公告内容" show-overflow-tooltip/><el-table-column prop="createTime" label="创建时间" width="180"/><el-table-column label="操作" width="140"><template #default="s"><el-button link @click="open(s.row)">编辑</el-button><el-button link type="danger" @click="remove(s.row)">删除</el-button></template></el-table-column></el-table><el-pagination v-model:current-page="query.page" v-model:page-size="query.pageSize" :total="total" layout="total,prev,pager,next" @current-change="load"/></el-card><el-dialog v-model="dialog" :title="editing===null?'新增公告':'编辑公告'"><el-input v-model="content" type="textarea" :rows="5"/><template #footer><el-button @click="dialog=false">取消</el-button><el-button type="primary" @click="save">保存</el-button></template></el-dialog></div></template>
+<style scoped>.notice-page{padding:16px}.header{display:flex;justify-content:space-between}.el-pagination{margin-top:16px;justify-content:flex-end}</style>

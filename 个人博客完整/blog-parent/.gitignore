@@ -1,0 +1,2 @@
+# Local service credentials and developer overrides
+**/src/main/resources/application-local.yml

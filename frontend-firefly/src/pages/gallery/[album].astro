@@ -1,0 +1,17 @@
+---
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import ApiState from "@/components/common/ApiState.astro";
+import { getGallery, type Gallery, type Photo } from "@/lib/api/gallery";
+import { resolveFileUrl } from "@/utils/file-url";
+let gallery: (Gallery & { photos: Photo[] }) | null = null, failed = false;
+try { if (!/^\d+$/.test(Astro.params.album || "")) throw new Error("invalid id"); gallery = await getGallery(Number(Astro.params.album)); } catch { failed = true; }
+---
+<MainGridLayout title={gallery?.name || "相册"} description={gallery?.description}>
+{failed || !gallery ? <ApiState kind={failed ? "error" : "not-found"} message={failed ? "相册加载失败" : "相册不存在"} retryHref="/gallery/" /> : gallery.photos.length === 0 ? <ApiState kind="empty" message="相册暂无照片" /> : <>
+<a class="back" href="/gallery/">← 返回相册列表</a>
+{gallery.photos[0] && <header class="hero"><img src={resolveFileUrl(gallery.photos[0].original || gallery.photos[0].thumbnail || "")} alt={gallery.name} /><div><h1>{gallery.name}</h1>{gallery.description && <p>{gallery.description}</p>}<span>{gallery.shootDate || ""}　📷 {gallery.photos.length} 张照片</span></div></header>}
+<div class="photos">{gallery.photos.map((p) => <a href={`/gallery/photo/${p.id}/`}><img src={resolveFileUrl(p.original || p.thumbnail || "/images/placeholder.png")} alt="" loading="lazy" /></a>)}</div>
+</>}
+</MainGridLayout>
+<style>.back{display:inline-block;margin-bottom:1rem;padding:.55rem .85rem;border-radius:.6rem;background:#10243dcc;color:#fff;text-decoration:none}.hero{position:relative;min-height:18rem;overflow:hidden;border-radius:1rem;margin-bottom:1.25rem;color:#fff}.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0009,#0001 70%)}.hero>div{position:relative;z-index:1;padding:8rem 2rem 1.5rem}.hero h1{font-size:2.1rem;margin:0 0 .4rem}.hero p{margin:0 0 .6rem}.hero span{font-size:.9rem}.photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.photos a{display:block}.photos img{width:100%;max-height:34rem;object-fit:cover;border-radius:.9rem;background:var(--card-bg)}@media(max-width:640px){.photos{grid-template-columns:1fr}.hero>div{padding:7rem 1.25rem 1.25rem}}
+</style>

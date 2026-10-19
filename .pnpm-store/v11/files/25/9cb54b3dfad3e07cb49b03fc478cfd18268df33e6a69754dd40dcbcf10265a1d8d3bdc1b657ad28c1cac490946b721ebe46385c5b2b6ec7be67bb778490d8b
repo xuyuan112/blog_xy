@@ -1,0 +1,137 @@
+{
+  "name": "remark-admonition-to-blockquote-callout",
+  "version": "1.0.0",
+  "description": "Remark plugin for converting Python-Markdown and MkDocs Material admonitions to blockquote callouts.",
+  "author": "Stephanie Lin",
+  "license": "MIT",
+  "keywords": [
+    "remark-plugin",
+    "mkdocs",
+    "python-markdown",
+    "admonitions",
+    "callouts",
+    "alerts"
+  ],
+  "repository": "github:lin-stephanie/remark-admonition-to-blockquote-callout",
+  "homepage": "https://github.com/lin-stephanie/remark-admonition-to-blockquote-callout#readme",
+  "bugs": "https://github.com/lin-stephanie/remark-admonition-to-blockquote-callout/issues",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "vitest && vitest run --coverage",
+    "build": "rimraf dist && tsc",
+    "typecheck": "tsc --noEmit",
+    "typecheck:coverage": "type-coverage --strict --detail --min=100",
+    "lint": "xo",
+    "lint:fix": "xo --fix",
+    "prepare": "simple-git-hooks",
+    "release": "npx bumpp --tag %s --commit 'chore: release %s' --all"
+  },
+  "dependencies": {
+    "@types/mdast": "^4.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "@vitest/coverage-v8": "^4.1.8",
+    "lint-staged": "^17.0.7",
+    "prettier": "^3.6.2",
+    "rehype-callouts": "^2.1.2",
+    "rehype-stringify": "^10.0.1",
+    "remark": "^15.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "rimraf": "^6.1.0",
+    "simple-git-hooks": "^2.13.1",
+    "to-vfile": "^8.0.0",
+    "type-coverage": "^2.29.7",
+    "typescript": "^5.9.3",
+    "unified": "^11.0.5",
+    "vitest": "^4.1.8",
+    "xo": "^1.2.3"
+  },
+  "xo": [
+    {
+      "prettier": true,
+      "space": true,
+      "semicolon": false,
+      "rules": {
+        "capitalized-comments": "off",
+        "import-x/order": [
+          "warn",
+          {
+            "groups": [
+              "builtin",
+              "external",
+              [
+                "internal",
+                "parent",
+                "sibling"
+              ],
+              "index",
+              "type",
+              "object",
+              "unknown"
+            ],
+            "pathGroups": [
+              {
+                "pattern": "{.,..}/types.js",
+                "group": "type",
+                "position": "after"
+              }
+            ],
+            "distinctGroup": false,
+            "newlines-between": "always",
+            "alphabetize": {
+              "order": "asc"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "**/*.{ts,tsx,cts,mts}"
+      ],
+      "languageOptions": {
+        "parserOptions": {
+          "projectService": false,
+          "project": "./tsconfig.eslint.json"
+        }
+      },
+      "rules": {
+        "@typescript-eslint/no-restricted-types": "off",
+        "@typescript-eslint/consistent-type-definitions": [
+          "error",
+          "interface"
+        ]
+      }
+    }
+  ],
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*": "xo"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "simple-git-hooks",
+      "unrs-resolver"
+    ]
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuyuan.blog.web.mapper.MomentMapper">
+    <resultMap id="MomentMap" type="com.xuyuan.blog.web.vo.moment.MomentVO">
+        <id property="id" column="id" />
+        <result property="images" column="images"
+                typeHandler="com.xuyuan.blog.model.handler.StringListTypeHandler" />
+        <result property="createdAt" column="createdAt" />
+    </resultMap>
+
+    <select id="pagePublished" resultMap="MomentMap">
+        SELECT
+            id,
+            content,
+            images,
+            location,
+            mood,
+            like_count AS likeCount,
+            comment_count AS commentCount,
+            create_time AS createdAt
+        FROM t_moment
+        WHERE deleted = 0
+          AND visible = 0
+        ORDER BY create_time DESC, id DESC
+    </select>
+</mapper>

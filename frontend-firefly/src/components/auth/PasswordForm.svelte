@@ -1,0 +1,7 @@
+<script lang="ts">
+	import { changePassword } from "@/lib/api/auth";
+	let oldPassword = "", newPassword = "", confirm = "", message = "", failed = false, busy = false;
+	async function submit() { failed = false; message = ""; if (newPassword.length < 6 || newPassword.length > 32 || newPassword !== confirm) { failed = true; message = "请检查新密码和确认密码"; return; } busy = true; try { await changePassword(oldPassword, newPassword); message = "密码修改成功"; oldPassword = newPassword = confirm = ""; } catch { failed = true; message = "密码修改失败，请重新登录后重试"; } finally { busy = false; } }
+</script>
+<form on:submit|preventDefault={submit}><label>当前密码<input bind:value={oldPassword} type="password" required /></label><label>新密码<input bind:value={newPassword} type="password" minlength="6" maxlength="32" required /></label><label>确认新密码<input bind:value={confirm} type="password" minlength="6" maxlength="32" required /></label>{#if message}<p class={failed ? "error" : "ok"} role="alert">{message}</p>{/if}<button type="submit" disabled={busy}>{busy ? "提交中..." : "提交修改"}</button></form>
+<style>form{display:grid;gap:1rem;max-width:26rem;margin:auto;padding:1.5rem;border:1px solid var(--line-divider);border-radius:.5rem}label{display:grid;gap:.35rem}input{padding:.6rem;border:1px solid var(--line-divider);border-radius:.25rem;background:transparent}button{padding:.6rem;background:var(--primary);color:#fff;border-radius:.25rem}button:disabled{opacity:.5}.error{color:#c33}.ok{color:var(--primary)}</style>

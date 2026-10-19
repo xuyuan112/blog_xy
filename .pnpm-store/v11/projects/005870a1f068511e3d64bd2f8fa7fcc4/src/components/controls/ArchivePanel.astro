@@ -1,0 +1,51 @@
+---
+---
+
+<section class="archive-panel card-base">
+  <div class="archive-state" data-archive-state>正在加载归档...</div>
+  <div class="archive-groups" data-archive-groups></div>
+</section>
+
+<script>
+  import { getTimeline } from "@/lib/api/archive";
+  const panel = document.querySelector(".archive-panel");
+  const state = panel?.querySelector("[data-archive-state]");
+  const groups = panel?.querySelector("[data-archive-groups]");
+  if (panel && state && groups && !panel.hasAttribute("data-loaded")) {
+    panel.setAttribute("data-loaded", "true");
+    const params = new URLSearchParams(window.location.search);
+    const categoryId = Number(params.get("categoryId"));
+    const tagId = Number(params.get("tagId"));
+    getTimeline({ categoryId: Number.isFinite(categoryId) && categoryId > 0 ? categoryId : undefined, tagId: Number.isFinite(tagId) && tagId > 0 ? tagId : undefined }).then((years) => {
+      state.textContent = years.length ? "" : "暂无归档内容";
+      for (const year of years) {
+        const section = document.createElement("section");
+        section.className = "archive-year";
+        const heading = document.createElement("h2");
+        heading.textContent = String(year.year);
+        section.append(heading);
+        for (const month of year.months || []) {
+          const monthHeading = document.createElement("h3");
+          monthHeading.textContent = String(month.month);
+          section.append(monthHeading);
+          for (const article of month.articles || []) {
+            const link = document.createElement("a");
+            link.href = `/posts/${article.id}/`;
+            link.textContent = article.title;
+            section.append(link);
+          }
+        }
+        groups.append(section);
+      }
+    }).catch(() => { state.textContent = "归档加载失败，请检查后端 API。"; });
+  }
+</script>
+
+<style>
+  .archive-panel { padding: 1.5rem; }
+  .archive-groups { display: grid; gap: 1.5rem; }
+  .archive-year { display: grid; gap: .45rem; }
+  .archive-year h2, .archive-year h3 { margin: 0; }
+  .archive-year h3 { margin-top: .5rem; color: var(--secondary); font-size: .95rem; }
+  .archive-year a { color: var(--primary); text-decoration: none; }
+</style>

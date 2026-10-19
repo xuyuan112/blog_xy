@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuyuan.blog.admin.mapper.MomentMapper">
+
+    <!--
+      images 列在数据库中为 JSON 数组字符串, resultType 自动映射不会应用 TypeHandler,
+      会导致 List<String> 反序列化失败(回显为空)。这里显式声明 typeHandler,
+      其余字段(autoMapping=true)仍按列名/别名自动映射。
+    -->
+    <resultMap id="adminMomentVOMap" type="com.xuyuan.blog.admin.vo.moment.AdminMomentVO" autoMapping="true">
+        <result property="images" column="images"
+                typeHandler="com.xuyuan.blog.model.handler.StringListTypeHandler"/>
+    </resultMap>
+
+    <select id="pageAdminList" resultMap="adminMomentVOMap">
+        SELECT id,
+               content,
+               images,
+               location,
+               mood,
+               visible,
+               like_count    AS likeCount,
+               comment_count AS commentCount,
+               DATE_FORMAT(create_time, '%Y-%m-%d %H:%i:%s') AS createTime
+        FROM t_moment
+        WHERE deleted = 0
+        ORDER BY create_time DESC, id DESC
+    </select>
+</mapper>

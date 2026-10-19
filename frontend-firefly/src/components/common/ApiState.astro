@@ -1,0 +1,29 @@
+---
+export type ApiStateKind = "loading" | "empty" | "error" | "not-found" | "unauthorized" | "disabled";
+
+interface Props {
+	kind: ApiStateKind;
+	message?: string;
+	retryHref?: string;
+}
+
+const { kind, message, retryHref } = Astro.props;
+const defaults: Record<ApiStateKind, string> = {
+	loading: "Loading…",
+	empty: "No data yet",
+	error: "Unable to load data",
+	"not-found": "Content was not found",
+	unauthorized: "Please sign in to continue",
+	disabled: "This feature is not connected",
+};
+---
+
+<div class={`api-state api-state-${kind}`} role={kind === "error" ? "alert" : "status"}>
+	<p>{message || defaults[kind]}</p>
+	{retryHref && <a href={retryHref}>Retry</a>}
+</div>
+
+<style>
+	.api-state { display: grid; gap: 0.5rem; place-items: center; padding: 2.5rem 1rem; text-align: center; color: var(--secondary); }
+	.api-state a { color: var(--primary); text-decoration: underline; text-underline-offset: 0.2em; }
+</style>

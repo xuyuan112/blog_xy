@@ -1,0 +1,74 @@
+// 全局基础样式与变量
+:root {
+  --admin-primary: #409eff;
+  --admin-success: #67c23a;
+  --admin-warning: #e6a23c;
+  --admin-danger: #f56c6c;
+  --admin-info: #909399;
+
+  --admin-bg: #f0f2f5;
+  --admin-sidebar-bg: #001529;
+  --admin-sidebar-text: #b7bdc7;
+  --admin-sidebar-active: #ffffff;
+  --admin-navbar-bg: #ffffff;
+  --admin-card-bg: #ffffff;
+  --admin-border: #e6e8eb;
+  --admin-text: #303133;
+  --admin-text-secondary: #909399;
+
+  --admin-sidebar-width: 210px;
+  --admin-sidebar-collapse-width: 64px;
+  --admin-navbar-height: 50px;
+  --admin-tagsview-height: 34px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', Arial, sans-serif;
+  color: var(--admin-text);
+  background-color: var(--admin-bg);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// 滚动条样式
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+// 通用卡片
+.admin-card {
+  background: var(--admin-card-bg);
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+}
+
+// 主内容区滚动容器
+.app-main {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--admin-bg);
+}

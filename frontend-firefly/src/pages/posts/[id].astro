@@ -1,0 +1,48 @@
+---
+import sanitizeHtml from "sanitize-html";
+import { marked } from "marked";
+import ApiState from "@/components/common/ApiState.astro";
+import { getArticle, type ArticleDetail } from "@/lib/api/articles";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import BackendComments from "@/components/comment/BackendComments.svelte";
+import LikeButton from "@/components/interaction/LikeButton.svelte";
+import "@/styles/markdown.css";
+import "@/styles/markdown-extend.styl";
+import { resolveFileUrl } from "@/utils/file-url";
+
+let article: ArticleDetail | null = null;
+let failed = false;
+try { article = await getArticle(Astro.params.id || ""); } catch { failed = true; }
+const html = article ? sanitizeHtml(await marked.parse(article.content || ""), {
+	allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img", "h1", "h2", "span"]),
+	allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, img: ["src", "alt", "title", "loading"], a: ["href", "target", "rel"] },
+	allowedSchemes: ["http", "https", "mailto"],
+	transformTags: {
+		img: (tagName, attribs) => ({ tagName, attribs: { ...attribs, src: resolveFileUrl(attribs.src) } }),
+	},
+}) : "";
+const tags = article?.tags?.map((tag) => typeof tag === "string" ? tag : tag.name) || [];
+---
+<MainGridLayout title={article?.title || "文章"} description={article?.summary || article?.description} setOGTypeArticle={true} postSlug={article ? String(article.id) : undefined}>
+	{failed || !article ? <ApiState kind={failed ? "error" : "not-found"} message={failed ? "文章加载失败" : "文章不存在或未发布"} retryHref="/" /> : <article class="card-base article-detail">
+		{article.cover && <img class="article-cover" src={resolveFileUrl(article.cover)} alt="" />}
+		<h1>{article.title}</h1>
+		<div class="meta"><span>{article.categoryName}</span><time datetime={article.publishedAt}>{article.publishedAt}</time><span>{article.viewCount || 0} 阅读</span></div>
+		{tags.length > 0 && <div class="tags">{tags.map((tag) => <span>{tag}</span>)}</div>}
+		<div data-pagefind-body class="prose dark:prose-invert prose-base max-w-none! custom-md markdown-content" set:html={html} />
+		<LikeButton client:load targetType={1} targetId={Number(Astro.params.id)} likeCount={article.likeCount || 0} />
+		<BackendComments client:load targetId={Number(Astro.params.id)} />
+		<nav class="article-nav">{article.prevArticle ? <a href={`/posts/${article.prevArticle.id}/`}>上一篇：{article.prevArticle.title}</a> : <span />}{article.nextArticle ? <a href={`/posts/${article.nextArticle.id}/`}>下一篇：{article.nextArticle.title}</a> : <span />}</nav>
+	</article>}
+</MainGridLayout>
+<style>
+	.article-detail { padding: 1.5rem; }
+	.article-cover { width: 100%; max-height: 26rem; object-fit: cover; border-radius: .75rem; margin-bottom: 2rem; }
+	.article-detail > h1 { position: relative; margin: 0 0 .75rem; font-size: 2rem; line-height: 1.25; font-weight: 700; }
+	.article-detail > h1::before { content: ""; position: absolute; left: -1rem; top: .25rem; width: .25rem; height: 1.25rem; border-radius: .375rem; background: var(--primary); }
+	.meta,.tags,.article-nav { display:flex; flex-wrap:wrap; gap:.75rem; color:var(--secondary); margin-bottom:1.25rem; }
+	.tags span { padding:.2rem .5rem; background:var(--btn-plain-bg); border-radius:.25rem; }
+	.article-nav { justify-content:space-between; border-top:1px dashed var(--line-divider); padding-top:1rem; margin-top:2rem; }
+	.article-nav a { color:var(--primary); }
+	@media (min-width: 768px) { .article-detail { padding: 2.25rem; } .article-detail > h1 { font-size: 2.25rem; } .article-detail > h1::before { left: -1.125rem; } }
+</style>

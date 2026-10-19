@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuyuan.blog.web.mapper.GalleryMapper">
+    <select id="pagePublished" resultType="com.xuyuan.blog.web.vo.gallery.GalleryVO">
+        SELECT
+            g.id,
+            g.name,
+            g.description,
+            g.cover,
+            g.shoot_date AS shootDate,
+            g.create_time AS createdAt,
+            COUNT(p.id) AS photoCount
+        FROM t_gallery g
+        LEFT JOIN t_photo p ON p.gallery_id = g.id AND p.deleted = 0
+        WHERE g.deleted = 0
+        <if test="query.keyword != null and query.keyword != ''">
+            AND (g.name LIKE CONCAT('%', #{query.keyword}, '%')
+                 OR g.description LIKE CONCAT('%', #{query.keyword}, '%'))
+        </if>
+        GROUP BY g.id, g.name, g.description, g.cover, g.shoot_date, g.create_time, g.sort
+        ORDER BY g.sort ASC, g.create_time DESC, g.id DESC
+    </select>
+</mapper>

@@ -1,0 +1,32 @@
+---
+import ApiState from "@/components/common/ApiState.astro";
+import { getAbout, type About } from "@/lib/api/site";
+import sanitizeHtml from "sanitize-html";
+import { marked } from "marked";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { profileConfig } from "@/config/profileConfig";
+import { resolveFileUrl } from "@/utils/file-url";
+import "@/styles/markdown.css";
+import "@/styles/markdown-extend.styl";
+
+let about: About | null = null;
+try { about = await getAbout(); } catch { about = null; }
+const title = about?.nickname || "About Me";
+const avatar = resolveFileUrl(about?.avatar) || profileConfig.avatar;
+const introHtml = about?.intro ? sanitizeHtml(await marked.parse(about.intro), {
+  allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img", "h1", "h2", "h3", "span"]),
+  allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, img: ["src", "alt", "title", "loading"], a: ["href", "target", "rel"] },
+  allowedSchemes: ["http", "https", "mailto"],
+}) : "";
+---
+<MainGridLayout title={title} description={about?.signature || about?.intro || title}>
+  {about ? <section class="about-page">
+    <header class="about-hero card-base">{avatar && <img class="about-avatar" src={avatar} alt={title} />}<div class="about-identity"><p class="about-kicker">About me</p><h1>{title}</h1>{about.signature && <p class="about-signature">{about.signature}</p>}</div></header>
+    {introHtml && <section class="about-section card-base"><div class="prose dark:prose-invert prose-base max-w-none! custom-md" set:html={introHtml} /></section>}
+    {about.skills.length > 0 && <section class="about-section card-base"><h2>Skills</h2><div class="skills-grid">{about.skills.map((skill) => <div class="skill"><div class="skill-label"><strong>{skill.name}</strong>{skill.category && <span>{skill.category}</span>}<b>{skill.level}%</b></div><div class="skill-track"><span style={`width:${Math.max(0, Math.min(100, skill.level))}%`}></span></div></div>)}</div></section>}
+    {about.milestones.length > 0 && <section class="about-section card-base"><h2>Journey</h2><ol class="milestones">{about.milestones.map((item) => <li><time>{item.year}</time><div><h3>{item.title}</h3>{item.description && <p>{item.description}</p>}</div></li>)}</ol></section>}
+  </section> : <ApiState kind="error" message="About data unavailable" />}
+</MainGridLayout>
+<style>
+  .about-page{display:grid;gap:1rem}.card-base{overflow:hidden}.about-hero{display:flex;align-items:center;gap:1.5rem;padding:1.5rem 2rem;background:linear-gradient(135deg,var(--card-bg),var(--btn-plain-bg))}.about-avatar{width:7rem;height:7rem;object-fit:cover;border-radius:50%;border:.25rem solid var(--btn-regular-bg)}.about-kicker{margin:0 0 .35rem;color:var(--primary);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}.about-identity h1{margin:0;font-size:2.25rem}.about-signature{margin:.5rem 0 0;color:var(--secondary);font-size:1.05rem}.about-section{padding:1.5rem 2rem}.about-section h2{margin:0 0 1.25rem;font-size:1.35rem}.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem 1.5rem}.skill-label{display:flex;align-items:center;gap:.5rem;margin-bottom:.45rem}.skill-label span{color:var(--secondary);font-size:.8rem}.skill-label b{margin-left:auto;color:var(--primary);font-size:.8rem}.skill-track{height:.5rem;border-radius:999px;background:var(--btn-plain-bg-active);overflow:hidden}.skill-track span{display:block;height:100%;border-radius:inherit;background:var(--primary)}.milestones{list-style:none;margin:0;padding:0 0 0 1rem;border-left:2px solid var(--line-divider)}.milestones li{display:grid;grid-template-columns:5rem 1fr;gap:1rem;position:relative;padding:0 0 1.25rem 1rem}.milestones li:last-child{padding-bottom:0}.milestones li::before{content:"";position:absolute;left:-.42rem;top:.25rem;width:.7rem;height:.7rem;border-radius:50%;background:var(--primary);box-shadow:0 0 0 .25rem var(--card-bg)}.milestones time{color:var(--primary);font-weight:700}.milestones h3{margin:0;font-size:1rem}.milestones p{margin:.35rem 0 0;color:var(--secondary);white-space:pre-wrap}@media(max-width:640px){.about-hero,.about-section{padding:1.25rem}.about-avatar{width:5.5rem;height:5.5rem}.about-identity h1{font-size:1.75rem}.milestones li{grid-template-columns:4rem 1fr;gap:.75rem}}
+</style>

@@ -1,0 +1,124 @@
+---
+import { Icon } from "astro-icon/components";
+import WidgetLayout from "@/components/common/WidgetLayout.astro";
+import { announcementConfig } from "@/config/announcementConfig";
+import { apiPath } from "@/config/runtimeConfig";
+import I18nKey from "@/i18n/i18nKey";
+import { i18n } from "@/i18n/translation";
+import type { WidgetComponentConfig } from "@/types/config";
+
+const config = announcementConfig;
+
+// 后端站长公告接口 (GET /xuyuan/site/notice → {code,data:{id,content,updatedAt}})
+// URL 必须在构建期算好, is:inline 脚本无法使用 import.meta.env 解析
+const noticeApiUrl = apiPath("/site/notice");
+
+interface Props {
+	class?: string;
+	style?: string;
+	widgetConfig?: WidgetComponentConfig;
+}
+const { class: className, style, widgetConfig } = Astro.props;
+
+const showTitle = widgetConfig?.showTitle !== false;
+const collapsedHeight = "4.5rem";
+---
+
+<!-- 组件显示现在由sidebarLayoutConfig统一控制，无需检查config.enable -->
+<WidgetLayout
+  name={config.title || i18n(I18nKey.announcement)}
+  showTitle={showTitle}
+  id="announcement"
+  isCollapsed={true}
+  collapsedHeight={collapsedHeight}
+  class={className}
+  style={style}
+>
+  <div>
+    <!-- 公告栏内容: 默认渲染本地降级文案, 客户端脚本拉取后端公告成功后替换 -->
+    <div
+      class="text-neutral-600 dark:text-neutral-300 leading-relaxed mb-3"
+      data-announcement-content
+    >
+      {config.content}
+    </div>
+
+    <!-- 可选链接和关闭按钮 -->
+    <div class="flex items-center justify-between gap-3">
+      <div>
+        {
+          config.link && config.link.enable !== false && (
+            <a
+              href={config.link.url}
+              target={config.link.external ? "_blank" : "_self"}
+              rel={config.link.external ? "noopener noreferrer" : undefined}
+              class="btn-regular rounded-lg px-3 py-1.5 text-sm font-medium active:scale-95 transition-transform"
+            >
+              {config.link.text}
+            </a>
+          )
+        }
+      </div>
+
+      {
+        config.closable && (
+          <button
+            class="btn-regular rounded-lg h-8 w-8 text-sm hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors"
+            onclick="this.closest('widget-layout').style.display='none'"
+            aria-label={i18n(I18nKey.announcementClose)}
+          >
+            <Icon name="fa7-solid:xmark" class="text-sm" />
+          </button>
+        )
+      }
+    </div>
+  </div>
+</WidgetLayout>
+
+<script is:inline define:vars={{ noticeApiUrl }}>
+	// 局域网/域名访问时，把构建期写死的 localhost 后端地址重写为当前访问域名，
+	// 保证公告请求始终指向宿主机后端而非访问设备自身。
+	function toHostUrl(u) {
+		return u.replace(
+			/^https?:\/\/(localhost|127\.0\.0\.1):8081/i,
+			window.location.protocol + "//" + window.location.hostname + ":8081",
+		);
+	}
+
+	function loadAnnouncement() {
+		const nodes = document.querySelectorAll("[data-announcement-content]");
+		if (!nodes.length) return;
+
+		fetch(toHostUrl(noticeApiUrl), {
+			headers: { Accept: "application/json" },
+			credentials: "include",
+		})
+			.then((res) => res.json())
+			.then((payload) => {
+				// 后端统一响应信封 {code, message, data}; code !== 200 视为业务失败
+				const content =
+					payload && payload.code === 200 && payload.data
+						? payload.data.content
+						: "";
+				// 后端暂无公告或异常时, 保留构建期的降级文案, 不清空
+				if (!content) return;
+				nodes.forEach((node) => {
+					node.textContent = content;
+				});
+			})
+			.catch(() => {
+				// 网络失败静默降级, 保留本地公告文案
+			});
+	}
+
+	// 首次加载立即拉取
+	loadAnnouncement();
+
+	// 防止 Swup 切页重跑脚本时重复注册监听器
+	if (!window.__announcementInit) {
+		window.__announcementInit = true;
+		document.addEventListener("swup:contentReplaced", () => {
+			setTimeout(loadAnnouncement, 100);
+		});
+	}
+</script>

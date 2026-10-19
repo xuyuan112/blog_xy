@@ -1,0 +1,979 @@
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mProxy environment variables detected. We'll use your proxy for fetch requests.[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mProxy environment variables detected. We'll use your proxy for fetch requests.[0m
+
+
+(node:32196) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[2m15:10:39[22m [34m[@astrojs/node][39m Enabling sessions with filesystem storage
+[2m15:10:39[22m [34m[vite][39m connected.
+[2m15:10:41[22m [34m[types][39m Generated [2m32ms[22m
+[2m15:10:41[22m [34m[vite][39m connected.
+[2m15:10:41[22m [34m[content][39m Syncing content
+[33m[1m15:10:41[22m [WARN] [glob-loader][39m No files found matching "**/*.md" in directory "src\content\dynamic"
+[33m[1m15:10:41[22m [WARN] [glob-loader][39m No files found matching "**/*.{md,mdx}" in directory "src\content\posts"
+[2m15:10:41[22m [34m[content][39m Synced content
+[2m15:10:42[22m [34m[vite][39m Forced re-optimization of dependencies
+[42m[1m astro [22m[49m [32mv7.2.4[39m [2mready in[22m 10283 [2mms[22m
+[2m┃[22m Local    [36mhttp://localhost:4321/[39m
+[2m┃[22m Network  [36mhttp://26.102.191.247:4321/[39m
+           [36mhttp://192.168.56.1:4321/[39m
+           [36mhttp://192.168.175.1:4321/[39m
+           [36mhttp://192.168.10.1:4321/[39m
+           [36mhttp://172.21.109.94:4321/[39m
+[2m15:10:42[22m [32mwatching for file changes...[39m
+[2m15:10:43[22m [34m[vite][39m [optimizer] bundling dependencies...
+[2m15:10:57[22m [34m[astro-icon][39m Loaded icons from src/icons, fa7-brands, fa7-regular, fa7-solid, material-symbols, mingcute, simple-icons, mdi, svg-spinners
+下午3:11:03 [vite-plugin-svelte] src/components/auth/AuthBar.svelte:31:85 Unused CSS selector ".auth-bar a"
+https://svelte.dev/e/css_unused_selector
+下午3:11:03 [vite-plugin-svelte] src/components/auth/AuthBar.svelte:31:97 Unused CSS selector ".auth-bar button"
+https://svelte.dev/e/css_unused_selector
+下午3:11:03 [vite-plugin-svelte] src/components/auth/AuthBar.svelte:31:135 Unused CSS selector ".auth-bar button"
+https://svelte.dev/e/css_unused_selector
+[2m15:11:05[22m [34m[200][39m /posts/2/ [2m710ms[22m
+[2m15:11:17[22m [34m[200][39m /gallery/ [2m136ms[22m
+下午3:14:34 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:15 This reference only captures the initial value of `initialArticles`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+下午3:14:34 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:42 This reference only captures the initial value of `initialArticles`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+下午3:14:34 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:95 This reference only captures the initial value of `initialPage`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+下午3:14:34 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:116 This reference only captures the initial value of `initialPages`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+下午3:14:34 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:138 This reference only captures the initial value of `initialTotal`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+下午3:14:34 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:87:175 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+下午3:14:34 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:87:1121 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+下午3:14:34 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:87:1270 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+下午3:14:34 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:4 `articles` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+下午3:14:34 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:32 `loading` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+下午3:14:34 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:72 `failed` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+下午3:14:34 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:88 `page` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+下午3:14:34 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:108 `pages` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+下午3:14:34 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:130 `total` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+[2m15:14:34[22m [34m[200][39m / [2m180ms[22m
+[2m15:14:34[22m [34m[200][39m /archive/ [2m173ms[22m
+[2m15:14:34[22m [34m[200][39m /archive/ [2m67ms[22m
+[2m15:14:34[22m [34m[200][39m /gallery/ [2m103ms[22m
+[2m15:14:34[22m [34m[200][39m /posts/ [2m204ms[22m
+[2m15:14:35[22m [34m[200][39m /thoughts/ [2m318ms[22m
+[2m15:14:35[22m [34m[200][39m /about/ [2m279ms[22m
+[2m15:14:35[22m [34m[200][39m /friends/ [2m224ms[22m
+[2m15:14:35[22m [34m[200][39m /archive/ [2m41ms[22m
+[2m15:14:35[22m [34m[200][39m /rss/ [2m386ms[22m
+[2m15:14:35[22m [34m[200][39m /login/ [2m360ms[22m
+[2m15:14:35[22m [34m[200][39m /archive/ [2m142ms[22m
+[2m15:14:35[22m [34m[200][39m /archive/ [2m57ms[22m
+[2m15:14:36[22m [34m[200][39m /posts/1/ [2m74ms[22m
+[2m15:14:36[22m [34m[200][39m /posts/2/ [2m223ms[22m
+[2m15:14:36[22m [34m[200][39m /dynamic/ [2m353ms[22m
+[2m15:14:36[22m [34m[200][39m /categories/ [2m264ms[22m
+下午3:14:44 [vite-plugin-svelte] src/components/auth/AuthBar.svelte:31:85 Unused CSS selector ".auth-bar a"
+https://svelte.dev/e/css_unused_selector
+下午3:14:44 [vite-plugin-svelte] src/components/auth/AuthBar.svelte:31:97 Unused CSS selector ".auth-bar button"
+https://svelte.dev/e/css_unused_selector
+下午3:14:44 [vite-plugin-svelte] src/components/auth/AuthBar.svelte:31:135 Unused CSS selector ".auth-bar button"
+https://svelte.dev/e/css_unused_selector
+下午3:14:44 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:15 This reference only captures the initial value of `initialArticles`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+下午3:14:44 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:42 This reference only captures the initial value of `initialArticles`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+下午3:14:44 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:95 This reference only captures the initial value of `initialPage`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+下午3:14:44 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:116 This reference only captures the initial value of `initialPages`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+下午3:14:44 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:138 This reference only captures the initial value of `initialTotal`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+下午3:14:44 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:87:175 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+下午3:14:44 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:87:1121 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+下午3:14:44 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:87:1270 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+下午3:14:44 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:4 `articles` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+下午3:14:44 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:32 `loading` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+下午3:14:44 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:72 `failed` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+下午3:14:44 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:88 `page` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+下午3:14:44 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:108 `pages` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+下午3:14:44 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:130 `total` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+[2m15:14:47[22m [34m[200][39m / [2m24ms[22m
+[2m15:14:48[22m [34m[vite][39m [optimizer] bundling dependencies...
+[2m15:14:48[22m [34m[200][39m /api/calendar.json [2m26ms[22m
+下午3:14:48 [vite-plugin-svelte] src/components/auth/AuthBar.svelte:31:85 Unused CSS selector ".auth-bar a"
+https://svelte.dev/e/css_unused_selector
+下午3:14:48 [vite-plugin-svelte] src/components/auth/AuthBar.svelte:31:97 Unused CSS selector ".auth-bar button"
+https://svelte.dev/e/css_unused_selector
+下午3:14:48 [vite-plugin-svelte] src/components/auth/AuthBar.svelte:31:135 Unused CSS selector ".auth-bar button"
+https://svelte.dev/e/css_unused_selector
+下午3:14:48 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:15 This reference only captures the initial value of `initialArticles`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+下午3:14:48 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:42 This reference only captures the initial value of `initialArticles`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+下午3:14:48 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:95 This reference only captures the initial value of `initialPage`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+下午3:14:48 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:116 This reference only captures the initial value of `initialPages`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+下午3:14:48 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:138 This reference only captures the initial value of `initialTotal`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+下午3:14:48 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:87:175 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+下午3:14:48 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:87:1121 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+下午3:14:48 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:87:1270 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+下午3:14:48 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:4 `articles` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+下午3:14:48 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:32 `loading` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+下午3:14:48 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:72 `failed` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+下午3:14:48 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:88 `page` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+下午3:14:48 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:108 `pages` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+下午3:14:48 [vite-plugin-svelte] src/components/pages/ArticleFeed.svelte:6:130 `total` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+[2m15:14:48[22m [34m[200][39m /_image/ [2m414ms[22m
+[31m[1m15:14:50[22m [ERROR][39m [31m[UnhandledRejection][39m Astro detected an unhandled rejection. Here's the stack trace:
+Error: [safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":353,"threshold":50,"scope":"turn","targets":["F:\\个人博客\\frontend-firefly\\node_modules\\.vite\\deps_temp_e045250b"],"targetCount":1}
+    at checkBulkDeleteGuard (F:\腾讯workBuddy\resources\app.asar.unpacked\cli\vendor\shim\node-safe-delete-shim.cjs:214:19)
+    at tryTrash (F:\腾讯workBuddy\resources\app.asar.unpacked\cli\vendor\shim\node-safe-delete-shim.cjs:566:5)
+    at tryRm (F:\腾讯workBuddy\resources\app.asar.unpacked\cli\vendor\shim\node-safe-delete-shim.cjs:747:5)
+    at Object.wrappedPromisesRm [as rm] (F:\腾讯workBuddy\resources\app.asar.unpacked\cli\vendor\shim\node-safe-delete-shim.cjs:791:15)
+    at Object.commit (file:///F:/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/frontend-firefly/node_modules/vite/dist/node/chunks/node.js:32266:9)
+    at async commitProcessing (file:///F:/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/frontend-firefly/node_modules/vite/dist/node/chunks/node.js:34541:5)
+    at async runOptimizer (file:///F:/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/frontend-firefly/node_modules/vite/dist/node/chunks/node.js:34563:5)
+  [1mHint:[22m
+[33m    Make sure your promises all have an `await` or a `.catch()` handler.[39m
+  [1mError reference:[22m
+    [36m[4mhttps://docs.astro.build/en/reference/errors/unhandled-rejection/[24m[39m
+  [1mStack trace:[22m
+[2m    at checkBulkDeleteGuard (F:\腾讯workBuddy\resources\app.asar.unpacked\cli\vendor\shim\node-safe-delete-shim.cjs:214:19)
+    at tryRm (F:\腾讯workBuddy\resources\app.asar.unpacked\cli\vendor\shim\node-safe-delete-shim.cjs:747:5)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[2m15:14:51[22m [34m[vite][39m [32mdependencies optimized: [33m@swup/astro/client/Swup, @swup/astro/client/SwupA11yPlugin, @swup/astro/client/SwupHeadPlugin, @swup/astro/client/SwupPreloadPlugin, @swup/astro/client/SwupScriptsPlugin, @swup/astro/idle, @swup/astro/serialise[32m[39m
+[2m15:14:51[22m [34m[200][39m / [2m24ms[22m
+[2m15:14:51[22m [34m[200][39m /login/ [2m8ms[22m
+[2m15:14:51[22m [34m[200][39m /dynamic/ [2m42ms[22m
+[2m15:14:51[22m [34m[200][39m /archive/ [2m38ms[22m
+[2m15:14:51[22m [34m[200][39m /thoughts/ [2m63ms[22m
+[2m15:14:51[22m [34m[200][39m /posts/ [2m103ms[22m
+[2m15:14:52[22m [34m[200][39m /friends/ [2m17ms[22m
+[2m15:14:52[22m [34m[200][39m /gallery/ [2m55ms[22m
+[2m15:14:52[22m [34m[200][39m /about/ [2m54ms[22m
+[2m15:14:52[22m [34m[200][39m /posts/1/ [2m74ms[22m
+[2m15:14:52[22m [34m[200][39m /posts/2/ [2m215ms[22m
+[2m15:14:59[22m [34m[200][39m /categories/ [2m21ms[22m
+[2m15:14:59[22m [34m[200][39m /archive/ [2m47ms[22m
+[2m15:14:59[22m [34m[200][39m /archive/ [2m45ms[22m
+[2m15:15:00[22m [34m[200][39m /rss/ [2m17ms[22m
+[2m15:15:12[22m [34m[200][39m /archive/ [2m58ms[22m
+[2m15:15:12[22m [34m[200][39m /archive/ [2m72ms[22m
+[2m15:15:12[22m [34m[200][39m /archive/ [2m129ms[22m
+[2m15:15:12[22m [34m[200][39m /archive/ [2m90ms[22m
+[2m15:15:12[22m [34m[200][39m /archive/ [2m120ms[22m
+[2m15:15:12[22m [34m[200][39m /archive/ [2m14ms[22m
+[2m15:15:12[22m [34m[200][39m /archive/ [2m34ms[22m
+[2m15:15:13[22m [34m[200][39m /archive/ [2m30ms[22m
+[2m15:15:13[22m [34m[200][39m /archive/ [2m54ms[22m
+[2m15:15:13[22m [34m[200][39m /archive/ [2m20ms[22m
+[2m15:15:13[22m [34m[200][39m /archive/ [2m21ms[22m
+[2m15:15:15[22m [34m[200][39m /_image/ [2m107ms[22m
+[2m15:15:15[22m [34m[200][39m /about/ [2m23ms[22m
+[2m15:15:16[22m [34m[200][39m /login/ [2m8ms[22m
+[2m15:15:16[22m [34m[200][39m /thoughts/ [2m32ms[22m
+[2m15:15:16[22m [34m[200][39m /dynamic/ [2m40ms[22m
+[2m15:15:16[22m [34m[200][39m / [2m106ms[22m
+[2m15:15:16[22m [34m[200][39m /posts/ [2m91ms[22m
+[2m15:15:16[22m [34m[200][39m /friends/ [2m35ms[22m
+[2m15:15:16[22m [34m[200][39m /archive/ [2m27ms[22m
+[2m15:15:16[22m [34m[200][39m /archive/ [2m82ms[22m
+[2m15:15:16[22m [34m[200][39m /archive/ [2m72ms[22m
+[2m15:15:16[22m [34m[200][39m /gallery/ [2m155ms[22m
+[2m15:15:17[22m [34m[200][39m /categories/ [2m12ms[22m
+[2m15:15:18[22m [34m[200][39m /about/ [2m20ms[22m
+[2m15:15:18[22m [34m[200][39m /api/calendar.json [2m12ms[22m
+[2m15:15:18[22m [34m[200][39m /_image/ [2m225ms[22m
+[2m15:15:18[22m [34m[200][39m /about/ [2m13ms[22m
+[2m15:15:19[22m [34m[200][39m /login/ [2m8ms[22m
+[2m15:15:19[22m [34m[200][39m /dynamic/ [2m34ms[22m
+[2m15:15:19[22m [34m[200][39m /thoughts/ [2m42ms[22m
+[2m15:15:19[22m [34m[200][39m / [2m97ms[22m
+[2m15:15:19[22m [34m[200][39m /posts/ [2m83ms[22m
+[2m15:15:19[22m [34m[200][39m /archive/ [2m18ms[22m
+[2m15:15:19[22m [34m[200][39m /friends/ [2m30ms[22m
+[2m15:15:19[22m [34m[200][39m /archive/ [2m32ms[22m
+[2m15:15:19[22m [34m[200][39m /gallery/ [2m76ms[22m
+[2m15:15:19[22m [34m[200][39m /archive/ [2m40ms[22m
+[2m15:15:19[22m [34m[200][39m /categories/ [2m24ms[22m
+[2m15:15:22[22m [34m[200][39m /rss/ [2m16ms[22m
+[2m15:15:23[22m [34m[200][39m /posts/2/ [2m155ms[22m
+[2m15:15:23[22m [34m[200][39m /posts/1/ [2m50ms[22m
+[2m15:15:24[22m [34m[200][39m /archive/ [2m15ms[22m
+[2m15:15:24[22m [34m[200][39m /archive/ [2m17ms[22m
+[2m15:15:24[22m [34m[200][39m /archive/ [2m35ms[22m
+[2m15:15:24[22m [34m[200][39m /archive/ [2m35ms[22m
+[2m15:15:24[22m [34m[200][39m /archive/ [2m56ms[22m
+[2m15:15:24[22m [34m[200][39m /archive/ [2m66ms[22m
+[2m15:15:24[22m [34m[200][39m /archive/ [2m75ms[22m
+[2m15:15:25[22m [34m[200][39m /archive/ [2m28ms[22m
+[2m15:15:25[22m [34m[200][39m /archive/ [2m24ms[22m
+[2m15:15:25[22m [34m[200][39m /archive/ [2m36ms[22m
+[2m15:15:25[22m [34m[200][39m /archive/ [2m55ms[22m
+[2m15:15:29[22m [34m[200][39m / [2m36ms[22m
+[2m15:15:29[22m [34m[200][39m /api/calendar.json [2m20ms[22m
+[2m15:15:29[22m [34m[200][39m /_image/ [2m184ms[22m
+[2m15:15:29[22m [34m[200][39m / [2m18ms[22m
+[2m15:15:30[22m [34m[200][39m /login/ [2m9ms[22m
+[2m15:15:30[22m [34m[200][39m /dynamic/ [2m26ms[22m
+[2m15:15:30[22m [34m[200][39m /archive/ [2m31ms[22m
+[2m15:15:30[22m [34m[200][39m /thoughts/ [2m58ms[22m
+[2m15:15:30[22m [34m[200][39m /posts/ [2m83ms[22m
+[2m15:15:30[22m [34m[200][39m /gallery/ [2m33ms[22m
+[2m15:15:30[22m [34m[200][39m /friends/ [2m46ms[22m
+[2m15:15:30[22m [34m[200][39m /archive/ [2m25ms[22m
+[2m15:15:30[22m [34m[200][39m /about/ [2m76ms[22m
+[2m15:15:30[22m [34m[200][39m /rss/ [2m85ms[22m
+[2m15:15:31[22m [34m[200][39m /archive/ [2m15ms[22m
+[2m15:15:31[22m [34m[200][39m /categories/ [2m25ms[22m
+[2m15:15:38[22m [34m[200][39m /gallery/2/ [2m103ms[22m
+[2m15:15:41[22m [34m[200][39m /gallery/photo/1/ [2m83ms[22m
+[2m15:15:41[22m [34m[200][39m /gallery/photo/2/ [2m18ms[22m
+[2m15:15:43[22m [34m[200][39m /archive/ [2m14ms[22m
+[2m15:15:49[22m [34m[200][39m /archive/ [2m15ms[22m
+[2m15:15:49[22m [34m[200][39m /archive/ [2m37ms[22m
+[2m15:15:49[22m [34m[200][39m /archive/ [2m36ms[22m
+[2m15:15:49[22m [34m[200][39m /archive/ [2m61ms[22m
+[2m15:15:49[22m [34m[200][39m /archive/ [2m70ms[22m
+[2m15:16:10[22m [34m[200][39m /posts/2/ [2m119ms[22m
+[2m15:16:21[22m [34m[200][39m /posts/1/ [2m34ms[22m
+[31m[1m15:27:51[22m [ERROR] [router][39m Failed to update routes via HMR:
+ TypeError: undefined is not a function
+[31m[1m15:27:51[22m [ERROR] [router][39m Failed to update routes via HMR:
+ TypeError: undefined is not a function
+[2m15:28:14[22m [34m[200][39m /_image/ [2m168ms[22m
+[2m15:28:15[22m [34m[200][39m / [2m93ms[22m
+[2m15:28:15[22m [34m[200][39m / [2m26ms[22m
+[2m15:28:15[22m [34m[200][39m /api/calendar.json [2m14ms[22m
+[2m15:28:16[22m [34m[200][39m / [2m17ms[22m
+[2m15:28:18[22m [34m[200][39m /login/ [2m169ms[22m
+[2m15:28:18[22m [34m[200][39m /dynamic/ [2m321ms[22m
+[2m15:28:18[22m [34m[200][39m /thoughts/ [2m350ms[22m
+[2m15:28:18[22m [34m[200][39m /posts/ [2m369ms[22m
+[2m15:28:18[22m [34m[200][39m /archive/ [2m479ms[22m
+[2m15:28:18[22m [34m[200][39m /gallery/ [2m98ms[22m
+[2m15:28:18[22m [34m[200][39m /archive/ [2m88ms[22m
+[2m15:28:18[22m [34m[200][39m /friends/ [2m288ms[22m
+[2m15:28:18[22m [34m[200][39m /about/ [2m298ms[22m
+[2m15:28:18[22m [34m[200][39m /rss/ [2m319ms[22m
+[2m15:28:19[22m [34m[200][39m /archive/ [2m16ms[22m
+[2m15:28:19[22m [34m[200][39m /categories/ [2m82ms[22m
+[2m15:28:19[22m [34m[200][39m / [2m19ms[22m
+[2m15:28:19[22m [34m[200][39m /api/calendar.json [2m8ms[22m
+[2m15:28:19[22m [34m[200][39m /_image/ [2m200ms[22m
+[2m15:28:20[22m [34m[200][39m / [2m18ms[22m
+[2m15:28:20[22m [34m[200][39m /login/ [2m7ms[22m
+[2m15:28:20[22m [34m[200][39m /archive/ [2m31ms[22m
+[2m15:28:20[22m [34m[200][39m /dynamic/ [2m78ms[22m
+[2m15:28:20[22m [34m[200][39m /thoughts/ [2m102ms[22m
+[2m15:28:20[22m [34m[200][39m /posts/ [2m68ms[22m
+[2m15:28:20[22m [34m[200][39m /friends/ [2m27ms[22m
+[2m15:28:21[22m [34m[200][39m /about/ [2m46ms[22m
+[2m15:28:21[22m [34m[200][39m /gallery/ [2m96ms[22m
+[2m15:28:21[22m [34m[200][39m /archive/ [2m34ms[22m
+[2m15:28:21[22m [34m[200][39m /rss/ [2m101ms[22m
+[2m15:28:21[22m [34m[200][39m /archive/ [2m17ms[22m
+[2m15:28:21[22m [34m[200][39m /categories/ [2m10ms[22m
+[2m15:28:43[22m [34m[200][39m /_image/ [2m105ms[22m
+[2m15:28:48[22m [34m[200][39m /_image/ [2m64ms[22m
+[2m15:28:51[22m [34m[200][39m /posts/1/ [2m120ms[22m
+[2m15:28:51[22m [34m[200][39m /posts/2/ [2m99ms[22m
+[31m[1m15:40:37[22m [ERROR] [router][39m Failed to update routes via HMR:
+ TypeError: undefined is not a function
+[31m[1m15:40:37[22m [ERROR] [router][39m Failed to update routes via HMR:
+ TypeError: undefined is not a function
+[31m[1m15:40:37[22m [ERROR] [router][39m Failed to update routes via HMR:
+ TypeError: undefined is not a function
+[31m[1m15:40:37[22m [ERROR] [router][39m Failed to update routes via HMR:
+ TypeError: undefined is not a function
+[31m[1m15:40:37[22m [ERROR] [router][39m Failed to update routes via HMR:
+ TypeError: undefined is not a function
+[31m[1m15:40:37[22m [ERROR] [router][39m Failed to update routes via HMR:
+ TypeError: undefined is not a function
+[31m[1m15:40:53[22m [ERROR] [router][39m Failed to update routes via HMR:
+ TypeError: undefined is not a function
+[31m[1m15:40:53[22m [ERROR] [router][39m Failed to update routes via HMR:
+ TypeError: undefined is not a function
+[31m[1m15:40:53[22m [ERROR] [router][39m Failed to update routes via HMR:
+ TypeError: undefined is not a function
+[31m[1m15:40:53[22m [ERROR] [router][39m Failed to update routes via HMR:
+ TypeError: undefined is not a function
+[31m[1m15:40:53[22m [ERROR] [router][39m Failed to update routes via HMR:
+ TypeError: undefined is not a function
+[2m15:41:07[22m [34m[200][39m / [2m107ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m6.avif
+[2m15:41:07[22m [34m[200][39m / [2m27ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m6.avif
+[2m15:41:07[22m [34m[200][39m /api/calendar.json [2m12ms[22m
+[2m15:41:07[22m [34m[200][39m /_image/ [2m77ms[22m
+[2m15:41:08[22m [34m[200][39m / [2m23ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m6.avif
+[2m15:41:09[22m [34m[200][39m /login/ [2m150ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m6.avif
+[2m15:41:09[22m [34m[200][39m /posts/ [2m367ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m6.avif
+[2m15:41:09[22m [34m[200][39m /dynamic/ [2m388ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m6.avif
+[2m15:41:09[22m [34m[200][39m /archive/ [2m403ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m6.avif
+[2m15:41:09[22m [34m[200][39m /thoughts/ [2m419ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m6.avif
+[2m15:41:09[22m [34m[200][39m /friends/ [2m151ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m6.avif
+[2m15:41:09[22m [34m[200][39m /archive/ [2m32ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m6.avif
+[2m15:41:10[22m [34m[200][39m /gallery/ [2m195ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m6.avif
+[2m15:41:10[22m [34m[200][39m /about/ [2m363ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m6.avif
+[2m15:41:10[22m [34m[200][39m /rss/ [2m378ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m6.avif
+[2m15:41:10[22m [34m[200][39m /archive/ [2m18ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m6.avif
+[2m15:41:10[22m [34m[200][39m /categories/ [2m104ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m6.avif
+[2m15:41:13[22m [34m[200][39m /posts/2/ [2m175ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m6.avif
+[2m15:41:36[22m [34m[200][39m /_image/ [2m89ms[22m
+[2m15:41:41[22m [34m[200][39m /_image/ [2m109ms[22m
+[2m15:41:46[22m [34m[200][39m /_image/ [2m83ms[22m
+[31m[1m15:55:29[22m [ERROR] [router][39m Failed to update routes via HMR:
+ TypeError: undefined is not a function
+[31m[1m15:55:29[22m [ERROR] [router][39m Failed to update routes via HMR:
+ TypeError: undefined is not a function
+[2m15:56:21[22m [34m[200][39m / [2m94ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:21[22m [34m[200][39m / [2m23ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:21[22m [34m[200][39m /api/calendar.json [2m13ms[22m
+[2m15:56:22[22m [34m[200][39m / [2m14ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:22[22m [34m[200][39m /login/ [2m100ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:23[22m [34m[200][39m /dynamic/ [2m422ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:23[22m [34m[200][39m /thoughts/ [2m456ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:23[22m [34m[200][39m /archive/ [2m478ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:23[22m [34m[200][39m /posts/ [2m496ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:23[22m [34m[200][39m /gallery/ [2m88ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:23[22m [34m[200][39m /friends/ [2m181ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:23[22m [34m[200][39m /about/ [2m196ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:23[22m [34m[200][39m /archive/ [2m63ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:23[22m [34m[200][39m / [2m51ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:23[22m [34m[200][39m /rss/ [2m249ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:23[22m [34m[200][39m /api/calendar.json [2m9ms[22m
+[2m15:56:24[22m [34m[200][39m / [2m18ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:24[22m [34m[200][39m /login/ [2m8ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:24[22m [34m[200][39m /dynamic/ [2m34ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:24[22m [34m[200][39m /archive/ [2m29ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:24[22m [34m[200][39m /thoughts/ [2m51ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:24[22m [34m[200][39m /posts/ [2m78ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:24[22m [34m[200][39m /friends/ [2m17ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:24[22m [34m[200][39m /gallery/ [2m51ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:25[22m [34m[200][39m /about/ [2m12ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:25[22m [34m[200][39m /rss/ [2m29ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:25[22m [34m[200][39m /archive/ [2m10ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:25[22m [34m[200][39m /archive/ [2m13ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:25[22m [34m[200][39m /categories/ [2m92ms[22m
+
+[ERROR] Image file not found: src/assets/images/MobileWallpaper/m3.avif
+[2m15:56:44[22m [34m[200][39m /_image/ [2m106ms[22m
+[2m15:56:49[22m [34m[200][39m /_image/ [2m68ms[22m
+[2m15:56:54[22m [34m[200][39m /_image/ [2m79ms[22m
+[2m15:56:59[22m [34m[200][39m /_image/ [2m86ms[22m
+[2m15:57:25[22m [34m[200][39m / [2m84ms[22m
+[2m15:57:25[22m [34m[200][39m /api/calendar.json [2m16ms[22m
+[2m15:57:26[22m [34m[200][39m / [2m18ms[22m
+[2m15:57:26[22m [34m[200][39m /login/ [2m157ms[22m
+[2m15:57:27[22m [34m[200][39m /dynamic/ [2m404ms[22m
+[2m15:57:27[22m [34m[200][39m /archive/ [2m460ms[22m
+[2m15:57:27[22m [34m[200][39m /thoughts/ [2m477ms[22m
+[2m15:57:27[22m [34m[200][39m /posts/ [2m491ms[22m
+[2m15:57:27[22m [34m[200][39m /gallery/ [2m96ms[22m
+[2m15:57:27[22m [34m[200][39m /archive/ [2m208ms[22m
+[2m15:57:27[22m [34m[200][39m /friends/ [2m261ms[22m
+[2m15:57:27[22m [34m[200][39m /about/ [2m269ms[22m
+[2m15:57:27[22m [34m[200][39m /rss/ [2m274ms[22m
+[2m15:57:27[22m [34m[200][39m /archive/ [2m14ms[22m
+[2m15:57:28[22m [34m[200][39m /categories/ [2m68ms[22m
+[2m15:57:28[22m [34m[200][39m / [2m21ms[22m
+[2m15:57:28[22m [34m[200][39m /api/calendar.json [2m14ms[22m
+[2m15:57:28[22m [34m[200][39m / [2m31ms[22m
+[2m15:57:28[22m [34m[200][39m /_image/ [2m90ms[22m
+[2m15:57:29[22m [34m[200][39m /login/ [2m9ms[22m
+[2m15:57:29[22m [34m[200][39m /archive/ [2m16ms[22m
+[2m15:57:29[22m [34m[200][39m /dynamic/ [2m43ms[22m
+[2m15:57:29[22m [34m[200][39m /thoughts/ [2m47ms[22m
+[2m15:57:29[22m [34m[200][39m /posts/ [2m74ms[22m
+[2m15:57:29[22m [34m[200][39m /gallery/ [2m31ms[22m
+[2m15:57:29[22m [34m[200][39m /friends/ [2m17ms[22m
+[2m15:57:29[22m [34m[200][39m /about/ [2m45ms[22m
+[2m15:57:29[22m [34m[200][39m /archive/ [2m33ms[22m
+[2m15:57:29[22m [34m[200][39m /rss/ [2m53ms[22m
+[2m15:57:29[22m [34m[200][39m /archive/ [2m22ms[22m
+[2m15:57:29[22m [34m[200][39m /categories/ [2m26ms[22m
+[2m15:57:38[22m [34m[200][39m /posts/2/ [2m195ms[22m
+[2m15:57:38[22m [34m[200][39m /posts/1/ [2m37ms[22m
+[2m15:58:15[22m [34m[200][39m /archive/ [2m20ms[22m
+[2m15:58:15[22m [34m[200][39m /archive/ [2m22ms[22m
+[2m15:58:31[22m [34m[200][39m /archive/ [2m40ms[22m
+[2m15:58:31[22m [34m[200][39m /archive/ [2m65ms[22m
+[2m15:58:31[22m [34m[200][39m /archive/ [2m59ms[22m
+[2m15:58:31[22m [34m[200][39m /archive/ [2m62ms[22m
+[2m15:58:31[22m [34m[200][39m /archive/ [2m73ms[22m
+[2m15:58:31[22m [34m[200][39m /archive/ [2m22ms[22m
+[2m15:58:31[22m [34m[200][39m /archive/ [2m12ms[22m
+[2m15:58:31[22m [34m[200][39m /archive/ [2m16ms[22m
+[2m15:58:31[22m [34m[200][39m /archive/ [2m20ms[22m
+[2m16:04:18[22m [34m[watch][39m src/config/sidebarConfig.ts
+[2m16:04:37[22m [34m[200][39m / [2m22ms[22m
+[2m16:04:44[22m [34m[200][39m / [2m13ms[22m
+[2m16:04:45[22m [34m[200][39m / [2m14ms[22m
+[2m16:04:56[22m [34m[200][39m / [2m19ms[22m
+[2m16:04:56[22m [34m[200][39m / [2m26ms[22m
+[2m16:04:57[22m [34m[200][39m / [2m14ms[22m
+[2m16:06:12[22m [34m[200][39m / [2m17ms[22m
+[2m16:06:12[22m [34m[200][39m /api/calendar.json [2m106ms[22m
+[2m16:06:13[22m [34m[200][39m / [2m18ms[22m
+[2m16:06:13[22m [34m[200][39m /api/calendar.json [2m7ms[22m
+[2m16:06:13[22m [34m[200][39m / [2m26ms[22m
+[2m16:06:14[22m [34m[200][39m /login/ [2m9ms[22m
+[2m16:06:14[22m [34m[200][39m /dynamic/ [2m66ms[22m
+[2m16:06:14[22m [34m[200][39m /thoughts/ [2m44ms[22m
+[2m16:06:14[22m [34m[200][39m /posts/ [2m87ms[22m
+[2m16:06:14[22m [34m[200][39m /archive/ [2m62ms[22m
+[2m16:06:14[22m [34m[200][39m /gallery/ [2m59ms[22m
+[2m16:06:14[22m [34m[200][39m /friends/ [2m31ms[22m
+[2m16:06:14[22m [34m[200][39m /about/ [2m47ms[22m
+[2m16:06:14[22m [34m[200][39m /rss/ [2m50ms[22m
+[2m16:06:14[22m [34m[200][39m /archive/ [2m38ms[22m
+[2m16:06:14[22m [34m[200][39m /archive/ [2m17ms[22m
+[2m16:06:14[22m [34m[200][39m /categories/ [2m17ms[22m
+[2m16:06:15[22m [34m[200][39m /archive/ [2m12ms[22m
+[2m16:06:15[22m [34m[200][39m /archive/ [2m13ms[22m
+[2m16:06:15[22m [34m[200][39m /archive/ [2m18ms[22m
+[2m16:06:15[22m [34m[200][39m /archive/ [2m22ms[22m
+[2m16:06:15[22m [34m[200][39m /archive/ [2m38ms[22m
+[2m16:06:15[22m [34m[200][39m /archive/ [2m37ms[22m
+[2m16:06:16[22m [34m[200][39m /archive/ [2m41ms[22m
+[2m16:06:16[22m [34m[200][39m /archive/ [2m46ms[22m
+[2m16:06:16[22m [34m[200][39m /archive/ [2m21ms[22m
+[2m16:06:16[22m [34m[200][39m /archive/ [2m23ms[22m
+[2m16:06:16[22m [34m[200][39m /archive/ [2m24ms[22m
+[2m16:06:17[22m [34m[200][39m /posts/1/ [2m57ms[22m
+[2m16:06:17[22m [34m[200][39m /posts/2/ [2m94ms[22m
+[2m16:06:45[22m [34m[200][39m /_image/ [2m69ms[22m
+[2m16:07:05[22m [34m[200][39m /_image/ [2m81ms[22m
+[2m16:07:24[22m [34m[200][39m /_image/ [2m12ms[22m
+[2m16:09:13[22m [34m[200][39m /thoughts/3/ [2m122ms[22m
+[2m16:13:16[22m [34m[watch][39m /src/styles/main.css
+[2m16:13:21[22m [34m[watch][39m /src/styles/main.css
+[2m16:13:35[22m [34m[watch][39m /src/styles/main.css, /src/components/pages/dynamic/DynamicFeed.svelte
+[2m16:13:43[22m [34m[watch][39m /src/components/pages/dynamic/DynamicFeed.svelte, /src/styles/main.css
+[2m16:13:54[22m [34m[watch][39m /src/styles/main.css
+[2m16:14:00[22m [34m[watch][39m /src/styles/main.css
+[2m16:14:34[22m [34m[watch][39m /src/styles/main.css, /src/styles/dynamic.css
+[2m16:16:28[22m [34m[watch][39m /src/styles/main.css
+[2m16:16:36[22m [34m[watch][39m /src/styles/main.css, /src/components/pages/dynamic/DynamicFeed.svelte
+[2m16:16:44[22m [34m[watch][39m /src/styles/main.css, /src/components/pages/dynamic/DynamicFeed.svelte
+[2m16:17:24[22m [34m[200][39m /dynamic/ [2m95ms[22m
+[2m16:17:32[22m [34m[200][39m /dynamic/ [2m23ms[22m
+[2m16:17:42[22m [34m[200][39m /dynamic/ [2m12ms[22m
+[2m16:17:53[22m [34m[200][39m /dynamic/ [2m12ms[22m
+[2m16:18:01[22m [34m[200][39m /dynamic/ [2m14ms[22m
+[2m16:18:10[22m [34m[200][39m /dynamic/ [2m14ms[22m
+[2m16:18:23[22m [34m[200][39m /dynamic/ [2m15ms[22m
+[2m16:18:32[22m [34m[200][39m /dynamic/ [2m10ms[22m
+[2m16:18:42[22m [33m[404][39m /@id/__x00__virtual:astro-internal:client-storage/ [2m92ms[22m
+[2m16:22:45[22m [34m[200][39m /dynamic/ [2m15ms[22m
+[2m16:22:45[22m [34m[200][39m /api/calendar.json [2m264ms[22m
+[2m16:22:46[22m [34m[200][39m /dynamic/ [2m12ms[22m
+[2m16:22:47[22m [34m[200][39m /thoughts/ [2m400ms[22m
+[2m16:22:47[22m [34m[200][39m /posts/ [2m416ms[22m
+[2m16:22:47[22m [34m[200][39m / [2m434ms[22m
+[2m16:22:47[22m [34m[200][39m /archive/ [2m454ms[22m
+[2m16:22:48[22m [34m[200][39m /gallery/ [2m553ms[22m
+[2m16:22:48[22m [34m[200][39m /archive/ [2m13ms[22m
+[2m16:22:48[22m [34m[200][39m /archive/ [2m41ms[22m
+[2m16:22:48[22m [34m[200][39m /login/ [2m280ms[22m
+[2m16:22:48[22m [34m[200][39m /friends/ [2m307ms[22m
+[2m16:22:48[22m [34m[200][39m /about/ [2m314ms[22m
+[2m16:22:48[22m [34m[200][39m /archive/ [2m31ms[22m
+[2m16:22:48[22m [34m[200][39m /archive/ [2m31ms[22m
+[2m16:22:48[22m [34m[200][39m /categories/ [2m151ms[22m
+[2m16:22:59[22m [34m[200][39m /dynamic/ [2m14ms[22m
+[2m16:22:59[22m [34m[200][39m /api/calendar.json [2m8ms[22m
+[2m16:22:59[22m [34m[200][39m /dynamic/ [2m13ms[22m
+[2m16:23:00[22m [34m[200][39m /archive/ [2m18ms[22m
+[2m16:23:00[22m [34m[200][39m /thoughts/ [2m39ms[22m
+[2m16:23:00[22m [34m[200][39m /posts/ [2m65ms[22m
+[2m16:23:00[22m [34m[200][39m / [2m87ms[22m
+[2m16:23:00[22m [34m[200][39m /gallery/ [2m108ms[22m
+[2m16:23:00[22m [34m[200][39m /login/ [2m7ms[22m
+[2m16:23:00[22m [34m[200][39m /friends/ [2m70ms[22m
+[2m16:23:00[22m [34m[200][39m /archive/ [2m36ms[22m
+[2m16:23:00[22m [34m[200][39m /archive/ [2m54ms[22m
+[2m16:23:00[22m [34m[200][39m /about/ [2m100ms[22m
+[2m16:23:00[22m [34m[200][39m /archive/ [2m37ms[22m
+[2m16:23:00[22m [34m[200][39m /archive/ [2m37ms[22m
+[2m16:23:00[22m [34m[200][39m /categories/ [2m46ms[22m
+[2m16:23:01[22m [34m[200][39m /archive/ [2m20ms[22m
+[2m16:23:01[22m [34m[200][39m /archive/ [2m26ms[22m
+[2m16:23:01[22m [34m[200][39m /posts/2/ [2m244ms[22m
+[2m16:23:17[22m [34m[200][39m /dynamic/ [2m16ms[22m
+[2m16:23:18[22m [34m[200][39m /dynamic/ [2m20ms[22m
+[2m16:23:22[22m [34m[200][39m /login/ [2m10ms[22m
+[2m16:23:22[22m [34m[200][39m /thoughts/ [2m29ms[22m
+[2m16:23:22[22m [34m[200][39m /archive/ [2m32ms[22m
+[2m16:23:22[22m [34m[200][39m /posts/ [2m62ms[22m
+[2m16:23:22[22m [34m[200][39m / [2m81ms[22m
+[2m16:23:22[22m [34m[200][39m /gallery/ [2m24ms[22m
+[2m16:23:22[22m [34m[200][39m /friends/ [2m23ms[22m
+[2m16:23:22[22m [34m[200][39m /about/ [2m44ms[22m
+[2m16:23:23[22m [34m[200][39m /dynamic/ [2m15ms[22m
+[2m16:23:23[22m [34m[200][39m /api/calendar.json [2m6ms[22m
+[2m16:23:24[22m [34m[200][39m /dynamic/ [2m13ms[22m
+[2m16:23:24[22m [34m[200][39m /login/ [2m7ms[22m
+[2m16:23:24[22m [34m[200][39m /thoughts/ [2m25ms[22m
+[2m16:23:24[22m [34m[200][39m /posts/ [2m63ms[22m
+[2m16:23:24[22m [34m[200][39m / [2m65ms[22m
+[2m16:23:24[22m [34m[200][39m /archive/ [2m66ms[22m
+[2m16:23:25[22m [34m[200][39m /gallery/ [2m30ms[22m
+[2m16:23:25[22m [34m[200][39m /friends/ [2m17ms[22m
+[2m16:23:25[22m [34m[200][39m /about/ [2m21ms[22m
+[2m16:23:25[22m [34m[200][39m /archive/ [2m17ms[22m
+[2m16:23:25[22m [34m[200][39m /archive/ [2m22ms[22m
+[2m16:23:25[22m [34m[200][39m /categories/ [2m11ms[22m
+[2m16:23:28[22m [34m[200][39m /register/ [2m88ms[22m
+[2m16:23:36[22m [34m[200][39m / [2m20ms[22m
+[2m16:23:36[22m [34m[200][39m /api/calendar.json [2m7ms[22m
+[2m16:23:37[22m [34m[200][39m / [2m15ms[22m
+[2m16:23:37[22m [34m[200][39m /archive/ [2m20ms[22m
+[2m16:23:37[22m [34m[200][39m /dynamic/ [2m64ms[22m
+[2m16:23:37[22m [34m[200][39m /thoughts/ [2m49ms[22m
+[2m16:23:37[22m [34m[200][39m /posts/ [2m89ms[22m
+[2m16:23:37[22m [34m[200][39m /settings/password/ [2m83ms[22m
+[2m16:23:37[22m [34m[200][39m /gallery/ [2m25ms[22m
+[2m16:23:38[22m [34m[200][39m /friends/ [2m42ms[22m
+[2m16:23:38[22m [34m[200][39m /about/ [2m44ms[22m
+[2m16:23:38[22m [34m[200][39m /archive/ [2m12ms[22m
+[2m16:23:38[22m [34m[200][39m /posts/2/ [2m211ms[22m
+[2m16:23:38[22m [34m[200][39m /categories/ [2m14ms[22m
+[2m16:23:38[22m [34m[200][39m /archive/ [2m13ms[22m
+[2m16:23:38[22m [34m[200][39m /rss/ [2m109ms[22m
+[2m16:23:39[22m [34m[200][39m /posts/1/ [2m41ms[22m
+[2m16:23:41[22m [34m[200][39m /archive/ [2m14ms[22m
+[2m16:23:41[22m [34m[200][39m /archive/ [2m12ms[22m
+[2m16:24:15[22m [34m[200][39m /dynamic/ [2m41ms[22m
+[2m16:24:16[22m [34m[200][39m /_image/ [2m21ms[22m
+[2m16:24:16[22m [34m[200][39m /_image/ [2m20ms[22m
+[2m16:24:16[22m [34m[200][39m /_image/ [2m23ms[22m
+[2m16:24:16[22m [34m[200][39m /api/calendar.json [2m18ms[22m
+[2m16:24:16[22m [34m[200][39m /_image/ [2m191ms[22m
+[2m16:24:17[22m [34m[200][39m /_image/ [2m16ms[22m
+[2m16:24:17[22m [34m[200][39m /dynamic/ [2m19ms[22m
+[2m16:24:18[22m [34m[200][39m /archive/ [2m25ms[22m
+[2m16:24:18[22m [34m[200][39m /thoughts/ [2m56ms[22m
+[2m16:24:18[22m [34m[200][39m / [2m93ms[22m
+[2m16:24:18[22m [34m[200][39m /posts/ [2m101ms[22m
+[2m16:24:18[22m [34m[200][39m /gallery/ [2m115ms[22m
+[2m16:24:18[22m [34m[200][39m /login/ [2m8ms[22m
+[2m16:24:18[22m [34m[200][39m /friends/ [2m51ms[22m
+[2m16:24:18[22m [34m[200][39m /about/ [2m64ms[22m
+[2m16:24:26[22m [34m[200][39m /archive/ [2m27ms[22m
+[2m16:24:26[22m [34m[200][39m /categories/ [2m40ms[22m
+[2m16:24:26[22m [34m[200][39m /archive/ [2m81ms[22m
+[2m16:24:26[22m [34m[200][39m /archive/ [2m78ms[22m
+[2m16:24:26[22m [34m[200][39m /archive/ [2m116ms[22m
+[2m16:25:07[22m [34m[200][39m /dynamic/ [2m20ms[22m
+[2m16:25:07[22m [34m[200][39m /api/calendar.json [2m7ms[22m
+[2m16:25:08[22m [34m[200][39m /dynamic/ [2m12ms[22m
+[2m16:25:08[22m [34m[200][39m /settings/password/ [2m8ms[22m
+[2m16:25:08[22m [34m[200][39m /thoughts/ [2m23ms[22m
+[2m16:25:08[22m [34m[200][39m / [2m53ms[22m
+[2m16:25:09[22m [34m[200][39m /posts/ [2m57ms[22m
+[2m16:25:09[22m [34m[200][39m /archive/ [2m62ms[22m
+[2m16:25:09[22m [34m[200][39m /gallery/ [2m31ms[22m
+[2m16:25:09[22m [34m[200][39m /friends/ [2m21ms[22m
+[2m16:25:09[22m [34m[200][39m /about/ [2m12ms[22m
+[2m16:26:58[22m [34m[watch][39m /src/styles/main.css, /src/components/pages/dynamic/DynamicFeed.svelte
+[2m16:27:05[22m [34m[watch][39m /src/styles/main.css, /src/styles/dynamic.css
+[2m16:27:45[22m [34m[watch][39m /src/styles/main.css, /src/components/pages/dynamic/DynamicFeed.svelte
+[2m16:28:22[22m [34m[watch][39m /src/styles/main.css, /src/components/pages/dynamic/DynamicFeed.svelte
+[2m16:28:36[22m [34m[watch][39m /src/styles/main.css, /src/components/pages/dynamic/DynamicFeed.svelte
+[2m16:29:16[22m [34m[200][39m /dynamic/ [2m87ms[22m
+[2m16:30:39[22m [34m[200][39m /dynamic/ [2m13ms[22m
+[2m16:30:39[22m [34m[200][39m /api/calendar.json [2m7ms[22m
+[2m16:30:40[22m [34m[200][39m /dynamic/ [2m14ms[22m
+[2m16:30:41[22m [34m[200][39m /thoughts/ [2m445ms[22m
+[2m16:30:41[22m [34m[200][39m / [2m462ms[22m
+[2m16:30:41[22m [34m[200][39m /posts/ [2m475ms[22m
+[2m16:30:41[22m [34m[200][39m /archive/ [2m492ms[22m
+[2m16:30:41[22m [34m[200][39m /gallery/ [2m580ms[22m
+[2m16:30:41[22m [34m[200][39m /archive/ [2m38ms[22m
+[2m16:30:41[22m [34m[200][39m /archive/ [2m39ms[22m
+[2m16:30:42[22m [34m[200][39m /login/ [2m294ms[22m
+[2m16:30:42[22m [34m[200][39m /friends/ [2m328ms[22m
+[2m16:30:42[22m [34m[200][39m /about/ [2m350ms[22m
+[2m16:30:42[22m [34m[200][39m /archive/ [2m23ms[22m
+[2m16:30:42[22m [34m[200][39m /archive/ [2m28ms[22m
+[2m16:30:42[22m [34m[200][39m /categories/ [2m106ms[22m
+[2m16:30:48[22m [34m[200][39m /archive/ [2m40ms[22m
+[2m16:30:48[22m [34m[200][39m /posts/2/ [2m228ms[22m
+[2m16:30:48[22m [34m[200][39m /archive/ [2m157ms[22m
+[2m16:30:48[22m [34m[200][39m /archive/ [2m157ms[22m
+[2m16:30:48[22m [34m[200][39m /archive/ [2m172ms[22m
+[2m16:30:48[22m [34m[200][39m /archive/ [2m30ms[22m
+[2m16:30:48[22m [34m[200][39m /archive/ [2m59ms[22m
+[2m16:30:48[22m [34m[200][39m /archive/ [2m61ms[22m
+[2m16:30:48[22m [34m[200][39m /archive/ [2m54ms[22m
+[2m16:30:48[22m [34m[200][39m /archive/ [2m64ms[22m
+[2m16:33:40[22m [34m[200][39m /dynamic/ [2m12ms[22m
+[2m16:33:40[22m [34m[200][39m /api/calendar.json [2m8ms[22m
+[2m16:33:40[22m [34m[200][39m /dynamic/ [2m19ms[22m
+[2m16:33:41[22m [34m[200][39m /archive/ [2m20ms[22m
+[2m16:33:41[22m [34m[200][39m /thoughts/ [2m50ms[22m
+[2m16:33:41[22m [34m[200][39m /posts/ [2m75ms[22m
+[2m16:33:41[22m [34m[200][39m / [2m99ms[22m
+[2m16:33:41[22m [34m[200][39m /gallery/ [2m113ms[22m
+[2m16:33:41[22m [34m[200][39m /login/ [2m7ms[22m
+[2m16:33:41[22m [34m[200][39m /friends/ [2m72ms[22m
+[2m16:33:41[22m [34m[200][39m /archive/ [2m36ms[22m
+[2m16:33:41[22m [34m[200][39m /about/ [2m91ms[22m
+[2m16:33:41[22m [34m[200][39m /archive/ [2m72ms[22m
+[2m16:33:41[22m [34m[200][39m /archive/ [2m30ms[22m
+[2m16:33:41[22m [34m[200][39m /archive/ [2m36ms[22m
+[2m16:33:41[22m [34m[200][39m /categories/ [2m40ms[22m
+[2m16:33:44[22m [34m[200][39m /posts/2/ [2m106ms[22m
+[2m16:33:45[22m [34m[200][39m /archive/ [2m21ms[22m
+[2m16:33:45[22m [34m[200][39m /archive/ [2m26ms[22m
+[2m16:33:45[22m [34m[200][39m /archive/ [2m36ms[22m
+[2m16:33:45[22m [34m[200][39m /archive/ [2m34ms[22m
+[2m16:33:45[22m [34m[200][39m /archive/ [2m54ms[22m
+[2m16:33:45[22m [34m[200][39m /archive/ [2m13ms[22m
+[2m16:33:45[22m [34m[200][39m /archive/ [2m36ms[22m
+[2m16:33:45[22m [34m[200][39m /archive/ [2m41ms[22m
+[2m16:33:45[22m [34m[200][39m /archive/ [2m46ms[22m
+[2m16:35:02[22m [34m[200][39m /gallery/2/ [2m82ms[22m
+[2m16:35:03[22m [34m[200][39m /gallery/ [2m24ms[22m
+[2m16:35:03[22m [34m[200][39m /api/calendar.json [2m7ms[22m
+[2m16:35:04[22m [34m[200][39m /gallery/ [2m23ms[22m
+[2m16:35:04[22m [34m[200][39m /gallery/2/ [2m30ms[22m
+[2m16:35:04[22m [34m[200][39m /dynamic/ [2m28ms[22m
+[2m16:35:04[22m [34m[200][39m /thoughts/ [2m39ms[22m
+[2m16:35:04[22m [34m[200][39m /posts/ [2m70ms[22m
+[2m16:35:04[22m [34m[200][39m / [2m95ms[22m
+[2m16:35:04[22m [34m[200][39m /archive/ [2m88ms[22m
+[2m16:35:05[22m [34m[200][39m /login/ [2m8ms[22m
+[2m16:35:05[22m [34m[200][39m /about/ [2m62ms[22m
+[2m16:35:05[22m [34m[200][39m /archive/ [2m37ms[22m
+[2m16:35:05[22m [34m[200][39m /friends/ [2m110ms[22m
+[2m16:35:05[22m [34m[200][39m /archive/ [2m83ms[22m
+[2m16:35:05[22m [34m[200][39m /archive/ [2m53ms[22m
+[2m16:35:05[22m [34m[200][39m /categories/ [2m34ms[22m
+[2m16:35:05[22m [34m[200][39m /archive/ [2m69ms[22m
+[2m16:35:05[22m [34m[200][39m /dynamic/ [2m49ms[22m
+[2m16:35:05[22m [34m[200][39m /dynamic/ [2m41ms[22m
+[2m16:35:06[22m [34m[200][39m /gallery/photo/3/ [2m82ms[22m
+[2m16:35:06[22m [34m[200][39m /gallery/photo/2/ [2m21ms[22m
+[2m16:35:06[22m [34m[200][39m /posts/2/ [2m108ms[22m
+[2m16:35:07[22m [34m[200][39m /gallery/photo/4/ [2m16ms[22m
+[2m16:35:07[22m [34m[200][39m /archive/ [2m19ms[22m
+[2m16:35:07[22m [34m[200][39m /archive/ [2m24ms[22m
+[2m16:35:21[22m [34m[200][39m /thoughts/3/ [2m101ms[22m
+[2m16:35:23[22m [34m[200][39m /dynamic/ [2m28ms[22m
+[2m16:35:23[22m [34m[200][39m /api/calendar.json [2m7ms[22m
+[2m16:35:24[22m [34m[200][39m /dynamic/ [2m29ms[22m
+[2m16:35:24[22m [34m[200][39m /archive/ [2m18ms[22m
+[2m16:35:24[22m [34m[200][39m /thoughts/ [2m42ms[22m
+[2m16:35:24[22m [34m[200][39m /posts/ [2m73ms[22m
+[2m16:35:24[22m [34m[200][39m / [2m105ms[22m
+[2m16:35:24[22m [34m[200][39m /settings/password/ [2m257ms[22m
+[2m16:35:25[22m [34m[200][39m /friends/ [2m12ms[22m
+[2m16:35:25[22m [34m[200][39m /gallery/ [2m57ms[22m
+[2m16:35:25[22m [34m[200][39m /about/ [2m40ms[22m
+[2m16:35:25[22m [34m[200][39m /archive/ [2m33ms[22m
+[2m16:35:25[22m [34m[200][39m /archive/ [2m18ms[22m
+[2m16:35:25[22m [34m[200][39m /categories/ [2m24ms[22m
+[2m16:45:22[22m [34m[200][39m /thoughts/ [2m19ms[22m
+[2m16:45:22[22m [34m[200][39m /api/calendar.json [2m8ms[22m
+[2m16:45:23[22m [34m[200][39m /thoughts/ [2m19ms[22m
+[2m16:45:23[22m [34m[200][39m /about/ [2m20ms[22m
+[2m16:45:24[22m [34m[200][39m /dynamic/ [2m26ms[22m
+[2m16:45:24[22m [34m[200][39m /archive/ [2m37ms[22m
+[2m16:45:24[22m [34m[200][39m / [2m81ms[22m
+[2m16:45:24[22m [34m[200][39m /posts/ [2m87ms[22m
+[2m16:45:24[22m [34m[200][39m /gallery/ [2m125ms[22m
+[2m16:45:24[22m [34m[200][39m /login/ [2m10ms[22m
+[2m16:45:24[22m [34m[200][39m /friends/ [2m66ms[22m
+[2m16:45:24[22m [34m[200][39m /archive/ [2m52ms[22m
+[2m16:45:24[22m [34m[200][39m /archive/ [2m58ms[22m
+[2m16:45:24[22m [34m[200][39m /archive/ [2m85ms[22m
+[2m16:45:24[22m [34m[200][39m /categories/ [2m26ms[22m
+[2m16:45:24[22m [34m[200][39m /dynamic/ [2m23ms[22m
+[2m16:45:24[22m [34m[200][39m /archive/ [2m64ms[22m
+[2m16:45:24[22m [34m[200][39m /thoughts/3/ [2m65ms[22m
+[2m16:45:24[22m [34m[200][39m /dynamic/ [2m34ms[22m
+[2m16:45:39[22m [34m[200][39m /posts/2/ [2m165ms[22m
+[2m16:45:39[22m [34m[200][39m /archive/ [2m22ms[22m
+[2m16:45:39[22m [34m[200][39m /archive/ [2m25ms[22m
+[2m16:45:39[22m [34m[200][39m /archive/ [2m34ms[22m
+[2m16:45:39[22m [34m[200][39m /archive/ [2m60ms[22m
+[2m16:45:39[22m [34m[200][39m /archive/ [2m59ms[22m
+[2m16:45:39[22m [34m[200][39m /archive/ [2m26ms[22m
+[2m16:45:39[22m [34m[200][39m /archive/ [2m29ms[22m
+[2m16:45:39[22m [34m[200][39m /archive/ [2m29ms[22m
+[2m16:45:39[22m [34m[200][39m /archive/ [2m33ms[22m
+[2m16:54:22[22m [34m[watch][39m /src/styles/main.css, /src/pages/about.astro?astro&type=style&index=0&lang.css
+[2m16:54:23[22m [34m[200][39m /about/ [2m90ms[22m
+[2m16:54:23[22m [34m[200][39m /api/calendar.json [2m8ms[22m
+[2m16:54:24[22m [34m[200][39m /about/ [2m13ms[22m
+[2m16:54:41[22m [34m[200][39m /about/ [2m16ms[22m
+[2m16:55:57[22m [34m[200][39m /about/ [2m13ms[22m
+[2m16:58:54[22m [34m[200][39m /about/ [2m26ms[22m
+[2m16:58:54[22m [34m[200][39m /api/calendar.json [2m6ms[22m
+[2m16:58:55[22m [34m[200][39m /about/ [2m31ms[22m
+[2m16:58:55[22m [34m[200][39m /archive/ [2m75ms[22m
+[2m16:58:55[22m [34m[200][39m /archive/ [2m15ms[22m
+[2m16:58:55[22m [34m[200][39m /archive/ [2m23ms[22m
+[2m16:58:56[22m [34m[200][39m /dynamic/ [2m414ms[22m
+[2m16:58:56[22m [34m[200][39m / [2m430ms[22m
+[2m16:58:56[22m [34m[200][39m /thoughts/ [2m438ms[22m
+[2m16:58:56[22m [34m[200][39m /posts/ [2m485ms[22m
+[2m16:58:56[22m [34m[200][39m /archive/ [2m15ms[22m
+[2m16:58:56[22m [34m[200][39m /archive/ [2m40ms[22m
+[2m16:58:56[22m [34m[200][39m /gallery/ [2m191ms[22m
+[2m16:58:56[22m [34m[200][39m /login/ [2m301ms[22m
+[2m16:58:56[22m [34m[200][39m /friends/ [2m335ms[22m
+[2m16:58:56[22m [34m[200][39m /dynamic/ [2m15ms[22m
+[2m16:58:56[22m [34m[200][39m /dynamic/ [2m23ms[22m
+[2m16:58:56[22m [34m[200][39m /categories/ [2m161ms[22m
+[2m16:58:57[22m [34m[200][39m /about/ [2m15ms[22m
+[2m16:58:58[22m [34m[200][39m /api/calendar.json [2m8ms[22m
+[2m16:58:58[22m [34m[200][39m /about/ [2m26ms[22m
+[2m16:58:58[22m [34m[200][39m /archive/ [2m14ms[22m
+[2m16:58:58[22m [34m[200][39m /archive/ [2m13ms[22m
+[2m16:58:58[22m [34m[200][39m /dynamic/ [2m26ms[22m
+[2m16:58:59[22m [34m[200][39m /archive/ [2m23ms[22m
+[2m16:58:59[22m [34m[200][39m /thoughts/ [2m41ms[22m
+[2m16:58:59[22m [34m[200][39m /posts/ [2m72ms[22m
+[2m16:58:59[22m [34m[200][39m / [2m95ms[22m
+[2m16:58:59[22m [34m[200][39m /login/ [2m7ms[22m
+[2m16:58:59[22m [34m[200][39m /friends/ [2m62ms[22m
+[2m16:58:59[22m [34m[200][39m /archive/ [2m51ms[22m
+[2m16:58:59[22m [34m[200][39m /archive/ [2m59ms[22m
+[2m16:58:59[22m [34m[200][39m /gallery/ [2m131ms[22m
+[2m16:58:59[22m [34m[200][39m /categories/ [2m22ms[22m
+[2m16:58:59[22m [34m[200][39m /dynamic/ [2m22ms[22m
+[2m16:58:59[22m [34m[200][39m /dynamic/ [2m24ms[22m
+[2m16:59:05[22m [34m[200][39m /about/ [2m13ms[22m
+[2m16:59:06[22m [34m[200][39m /api/calendar.json [2m6ms[22m
+[2m16:59:06[22m [34m[200][39m /about/ [2m26ms[22m
+[2m16:59:07[22m [34m[200][39m /dynamic/ [2m25ms[22m
+[2m16:59:07[22m [34m[200][39m /archive/ [2m23ms[22m
+[2m16:59:07[22m [34m[200][39m /thoughts/ [2m41ms[22m
+[2m16:59:07[22m [34m[200][39m /posts/ [2m67ms[22m
+[2m16:59:07[22m [34m[200][39m / [2m89ms[22m
+[2m16:59:07[22m [34m[200][39m /login/ [2m7ms[22m
+[2m16:59:07[22m [34m[200][39m /friends/ [2m59ms[22m
+[2m16:59:07[22m [34m[200][39m /archive/ [2m40ms[22m
+[2m16:59:07[22m [34m[200][39m /archive/ [2m44ms[22m
+[2m16:59:07[22m [34m[200][39m /gallery/ [2m130ms[22m
+[2m16:59:07[22m [34m[200][39m /archive/ [2m26ms[22m
+[2m16:59:07[22m [34m[200][39m /archive/ [2m47ms[22m
+[2m16:59:07[22m [34m[200][39m /categories/ [2m42ms[22m
+[2m16:59:07[22m [34m[200][39m /dynamic/ [2m47ms[22m
+[2m16:59:07[22m [34m[200][39m /dynamic/ [2m36ms[22m
+[2m16:59:25[22m [34m[200][39m /posts/2/ [2m177ms[22m
+[2m16:59:25[22m [34m[200][39m /archive/ [2m42ms[22m
+[2m16:59:25[22m [34m[200][39m /archive/ [2m47ms[22m
+[2m16:59:25[22m [34m[200][39m /archive/ [2m54ms[22m
+[2m16:59:25[22m [34m[200][39m /archive/ [2m57ms[22m
+[2m16:59:26[22m [34m[200][39m /archive/ [2m74ms[22m
+[2m16:59:26[22m [34m[200][39m /archive/ [2m17ms[22m
+[2m16:59:26[22m [34m[200][39m /archive/ [2m37ms[22m
+[2m16:59:26[22m [34m[200][39m /archive/ [2m64ms[22m
+[2m16:59:26[22m [34m[200][39m /archive/ [2m42ms[22m
+[2m16:59:37[22m [34m[200][39m /dynamic/ [2m14ms[22m
+[2m16:59:37[22m [34m[200][39m /api/calendar.json [2m5ms[22m
+[2m16:59:37[22m [34m[200][39m /dynamic/ [2m11ms[22m
+[2m16:59:38[22m [34m[200][39m /login/ [2m7ms[22m
+[2m16:59:38[22m [34m[200][39m /archive/ [2m19ms[22m
+[2m16:59:38[22m [34m[200][39m /thoughts/ [2m40ms[22m
+[2m16:59:38[22m [34m[200][39m /posts/ [2m90ms[22m
+[2m16:59:38[22m [34m[200][39m / [2m91ms[22m
+[2m16:59:38[22m [34m[200][39m /friends/ [2m13ms[22m
+[2m16:59:38[22m [34m[200][39m /gallery/ [2m48ms[22m
+[2m16:59:38[22m [34m[200][39m /about/ [2m17ms[22m
+[2m16:59:38[22m [34m[200][39m /archive/ [2m11ms[22m
+[2m16:59:38[22m [34m[200][39m /archive/ [2m23ms[22m
+[2m16:59:38[22m [34m[200][39m /categories/ [2m21ms[22m
+[2m17:00:26[22m [34m[200][39m /archive/ [2m15ms[22m
+[2m17:00:26[22m [34m[200][39m /archive/ [2m25ms[22m
+[2m17:00:26[22m [34m[200][39m /archive/ [2m51ms[22m
+[2m17:00:26[22m [34m[200][39m /archive/ [2m54ms[22m
+[2m17:00:26[22m [34m[200][39m /archive/ [2m52ms[22m
+[2m17:00:26[22m [34m[200][39m /archive/ [2m83ms[22m
+[2m17:00:26[22m [34m[200][39m /archive/ [2m25ms[22m
+[2m17:00:26[22m [34m[200][39m /archive/ [2m22ms[22m
+[2m17:00:26[22m [34m[200][39m /archive/ [2m16ms[22m
+[2m17:00:26[22m [34m[200][39m /archive/ [2m21ms[22m
+[2m17:00:26[22m [34m[200][39m /archive/ [2m31ms[22m
+[2m17:00:33[22m [34m[200][39m /posts/1/ [2m30ms[22m
+[2m17:00:33[22m [34m[200][39m /rss/ [2m83ms[22m
+[2m17:02:13[22m [34m[200][39m /about/ [2m14ms[22m
+[2m17:02:14[22m [34m[200][39m /about/ [2m17ms[22m
+[2m17:02:16[22m [34m[200][39m /login/ [2m9ms[22m
+[2m17:02:16[22m [34m[200][39m /dynamic/ [2m66ms[22m
+[2m17:02:16[22m [34m[200][39m / [2m71ms[22m
+[2m17:02:16[22m [34m[200][39m /posts/ [2m65ms[22m
+[2m17:02:17[22m [34m[200][39m /thoughts/ [2m102ms[22m
+[2m17:02:17[22m [34m[200][39m /archive/ [2m10ms[22m
+[2m17:02:17[22m [34m[200][39m /friends/ [2m13ms[22m
+[2m17:02:17[22m [34m[200][39m /gallery/ [2m40ms[22m
+[2m17:02:17[22m [34m[200][39m /archive/ [2m20ms[22m
+[2m17:02:17[22m [34m[200][39m /archive/ [2m22ms[22m
+[2m17:02:17[22m [34m[200][39m /categories/ [2m13ms[22m
+[2m17:02:19[22m [34m[200][39m /_image/ [2m107ms[22m
+[2m17:02:25[22m [34m[200][39m /_image/ [2m98ms[22m
+[2m17:03:14[22m [34m[200][39m /about/ [2m25ms[22m
+[2m17:03:14[22m [34m[200][39m /_image/ [2m124ms[22m
+[2m17:03:14[22m [34m[200][39m /api/calendar.json [2m7ms[22m
+[2m17:03:14[22m [34m[200][39m /_image/ [2m81ms[22m
+[2m17:03:15[22m [34m[200][39m /about/ [2m25ms[22m
+[2m17:03:15[22m [34m[200][39m /login/ [2m7ms[22m
+[2m17:03:15[22m [34m[200][39m /dynamic/ [2m68ms[22m
+[2m17:03:15[22m [34m[200][39m /thoughts/ [2m73ms[22m
+[2m17:03:15[22m [34m[200][39m /posts/ [2m79ms[22m
+[2m17:03:15[22m [34m[200][39m / [2m106ms[22m
+[2m17:03:15[22m [34m[200][39m /archive/ [2m30ms[22m
+[2m17:03:15[22m [34m[200][39m /gallery/ [2m37ms[22m
+[2m17:03:16[22m [34m[200][39m /friends/ [2m29ms[22m
+[2m17:03:16[22m [34m[200][39m /archive/ [2m33ms[22m
+[2m17:03:16[22m [34m[200][39m /archive/ [2m11ms[22m
+[2m17:03:16[22m [34m[200][39m /categories/ [2m9ms[22m
+[2m17:18:30[22m [34m[watch][39m src/config/siteConfig.ts
+[2m17:19:26[22m [34m[200][39m / [2m94ms[22m
+[2m17:19:43[22m [34m[200][39m / [2m29ms[22m
+[2m17:20:02[22m [34m[200][39m / [2m17ms[22m
+[2m17:20:49[22m [34m[200][39m / [2m33ms[22m
+[2m17:20:49[22m [34m[200][39m /_image/ [2m294ms[22m
+[2m17:20:49[22m [34m[200][39m /api/calendar.json [2m27ms[22m
+[2m17:20:50[22m [34m[200][39m / [2m26ms[22m
+[2m17:20:51[22m [34m[200][39m /dynamic/ [2m474ms[22m
+[2m17:20:51[22m [34m[200][39m /thoughts/ [2m496ms[22m
+[2m17:20:51[22m [34m[200][39m /posts/ [2m527ms[22m
+[2m17:20:51[22m [34m[200][39m /archive/ [2m534ms[22m
+[2m17:20:51[22m [34m[200][39m /gallery/ [2m620ms[22m
+[2m17:20:51[22m [34m[200][39m /archive/ [2m16ms[22m
+[2m17:20:52[22m [34m[200][39m /login/ [2m361ms[22m
+[2m17:20:52[22m [34m[200][39m /friends/ [2m393ms[22m
+[2m17:20:52[22m [34m[200][39m /about/ [2m405ms[22m
+[2m17:20:52[22m [34m[200][39m /rss/ [2m422ms[22m
+[2m17:20:52[22m [34m[200][39m /archive/ [2m26ms[22m
+[2m17:20:52[22m [34m[200][39m /archive/ [2m31ms[22m
+[2m17:20:52[22m [34m[200][39m /archive/ [2m41ms[22m
+[2m17:20:52[22m [34m[200][39m /categories/ [2m265ms[22m
+[2m17:20:52[22m [34m[200][39m /posts/2/ [2m417ms[22m
+[2m17:20:52[22m [34m[200][39m /posts/1/ [2m183ms[22m
+[2m17:20:52[22m [34m[200][39m /dynamic/ [2m57ms[22m
+[2m17:20:53[22m [34m[200][39m /dynamic/ [2m25ms[22m
+[2m17:21:57[22m [34m[200][39m /archive/ [2m62ms[22m
+[2m17:21:57[22m [34m[200][39m /archive/ [2m68ms[22m
+[2m17:21:57[22m [34m[200][39m /archive/ [2m73ms[22m
+[2m17:21:57[22m [34m[200][39m /archive/ [2m79ms[22m
+[2m17:21:57[22m [34m[200][39m /archive/ [2m86ms[22m
+[2m17:21:57[22m [34m[200][39m /archive/ [2m42ms[22m
+[2m17:21:57[22m [34m[200][39m /archive/ [2m41ms[22m
+[2m17:21:57[22m [34m[200][39m /archive/ [2m43ms[22m
+[2m17:21:57[22m [34m[200][39m /archive/ [2m53ms[22m
+[2m20:37:40[22m [34m[200][39m / [2m15780ms[22m

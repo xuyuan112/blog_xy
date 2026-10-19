@@ -1,0 +1,1 @@
+import{c as n,f as e,d as s,e as r}from"./request-qU15BzWa.js";function g(){return n("/tags")}function i(a){return e("/tags",a)}function d(a,t){return s(`/tags/${a}`,t)}function o(a){return r(`/tags/${a}`)}export{i as c,o as d,g,d as u};

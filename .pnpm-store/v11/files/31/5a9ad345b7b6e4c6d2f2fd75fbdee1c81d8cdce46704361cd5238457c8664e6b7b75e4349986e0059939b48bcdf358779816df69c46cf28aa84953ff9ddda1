@@ -1,0 +1,8 @@
+/**
+ * Transforms an already-resolved image stream. Split out from `transform` so the build
+ * can hand over source bytes it read itself: during the build the original image lives
+ * in Astro's intermediate output rather than behind the ASSETS binding, so the worker
+ * has no way to fetch it.
+ */
+export declare function transformStream(body: ReadableStream, params: URLSearchParams, images: ImagesBinding): Promise<Response>;
+export declare function transform(rawUrl: string, images: ImagesBinding, assets: Fetcher): Promise<Response>;

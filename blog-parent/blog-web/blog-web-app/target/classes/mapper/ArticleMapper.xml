@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuyuan.blog.web.mapper.ArticleMapper">
+  <select id="pagePublished" resultType="com.xuyuan.blog.web.vo.article.ArticleListItemVO">
+    SELECT a.id,a.title,a.cover,a.summary,a.category_id AS categoryId,c.name AS categoryName,
+           a.view_count AS viewCount,a.comment_count AS commentCount,a.like_count AS likeCount,
+           a.type,a.is_top AS isTop,a.published_at AS publishedAt
+    FROM t_article a LEFT JOIN t_category c ON c.id=a.category_id AND c.deleted=0
+    WHERE a.deleted=0 AND a.status=1
+    <if test="q.type != null">AND a.type=#{q.type}</if>
+    <if test="q.categoryId != null">AND a.category_id=#{q.categoryId}</if>
+    <if test="q.tagId != null">AND EXISTS (SELECT 1 FROM t_article_tag at WHERE at.article_id=a.id AND at.tag_id=#{q.tagId})</if>
+    <if test="q.keyword != null and q.keyword != ''">AND (a.title LIKE CONCAT('%',#{q.keyword},'%') OR a.summary LIKE CONCAT('%',#{q.keyword},'%'))</if>
+    ORDER BY IFNULL(a.is_top,0) DESC,a.published_at DESC,a.id DESC
+  </select>
+</mapper>

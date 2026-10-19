@@ -1,0 +1,35 @@
+/* tslint:disable */
+/* eslint-disable */
+export const memory: WebAssembly.Memory;
+export const abiVersion: () => number;
+export const analysisFacts: (a: number, b: number, c: number, d: number) => [number, number, number];
+export const analyze: (a: number, b: number, c: number, d: number) => [number, number, number];
+export const analyzeDocument: (a: number, b: number, c: number, d: number, e: number, f: number) => [number, number, number];
+export const analyzeDocumentFacts: (a: number, b: number, c: number, d: number, e: number, f: number) => [number, number, number];
+export const asciiCapabilities: () => [number, number, number];
+export const asciiSupportedDiagrams: () => [number, number, number];
+export const bindingCapabilities: () => [number, number, number];
+export const diagramFamilyCapabilities: () => [number, number, number];
+export const layoutJson: (a: number, b: number, c: number, d: number) => [number, number, number, number];
+export const layoutJsonWithTextMeasurer: (a: number, b: number, c: number, d: number, e: any) => [number, number, number, number];
+export const lintRuleCatalog: () => [number, number, number];
+export const packageVersion: () => [number, number];
+export const parseJson: (a: number, b: number, c: number, d: number) => [number, number, number, number];
+export const renderAscii: (a: number, b: number, c: number, d: number) => [number, number, number, number];
+export const renderSvg: (a: number, b: number, c: number, d: number) => [number, number, number, number];
+export const renderSvgWithTextMeasurer: (a: number, b: number, c: number, d: number, e: any) => [number, number, number, number];
+export const selectedRegistryProfile: () => [number, number];
+export const start: () => void;
+export const supportedDiagrams: () => [number, number, number];
+export const supportedHostThemePresets: () => [number, number, number];
+export const supportedThemes: () => [number, number, number];
+export const validate: (a: number, b: number, c: number, d: number) => [number, number, number];
+export const analyzeJson: (a: number, b: number, c: number, d: number) => [number, number, number];
+export const __wbindgen_malloc: (a: number, b: number) => number;
+export const __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
+export const __wbindgen_exn_store: (a: number) => void;
+export const __externref_table_alloc: () => number;
+export const __wbindgen_externrefs: WebAssembly.Table;
+export const __wbindgen_free: (a: number, b: number, c: number) => void;
+export const __externref_table_dealloc: (a: number) => void;
+export const __wbindgen_start: () => void;
